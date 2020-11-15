@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CS171 - Final Project</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+	<div class="container">
+
+		<!--nav bar-->
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="#top">About</a>
+			<a href="#dashboard">WildFire Dashboard</a>
+			<a href="#heatmap">Causes of Wildfires</a>
+			<a href="#demographics">Demographics</a>
+			<a href="#citations">Citations?</a>
+		</div>
+
+		<div id="main">
+			<span style="font-size:30px;cursor:pointer;position: fixed; left: 100px;" onclick="openNav()">&#9776; Menu</span>
+			<article>
+
+				<!--title page-->
+				<section style="height: 100vh;"><a name="top"></a>
+				<img style="height: 96vh; width: 100%;" src="img/wildfire.jpg" alt="Wildfire Picture.">
+				<div class="centered">
+					<span style="color: dimgrey; background: tan;">
+						Asking the Burning Questions: Visualizing The West Coast’s Devastating "New Normal"
+					</span><br><br>
+					<span style="color: dimgrey; background: tan; font-size:32px;">
+						By: Katherine Deng, Anna Li, and Christina Wang
+					</span>
+				</div>
+				</section>
+
+				<!--dashboard-->
+				<section style="height: 100vh;"><a name="dashboard"></a>
+					<img style="height: 96vh; width: 100%;" src="img/dashboard.png" alt="Dashboard Picture.">
+				</section>
+
+				<!--heatmap-->
+				<section style="height: 100vh;"><a name="heatmap"></a>
+					<div id="cause-bar" style="height: 50vh"></div>
+					<div id="heat-map" style="height: 50vh"></div>
+				</section>
+
+				<!--parallel sets-->
+				<section style="height: 100vh;"> <a name="demographics"></a>
+					<img style="height: 96vh; width: 100%;" src="img/parallel_sets.png" alt="Parallel Sets Picture.">
+				</section>
+
+				<!--citations-->
+				<section style="height: 100vh;"> <a name="citations"></a>
+					HI :D
+					<img style="height: 50vh;" src="img/alpaca.jpg" alt="hehe">
+				</section>
+
+			</article>
+		</div>
+
+	</div>
+	<script>
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("main").style.marginLeft= "0";
+		}
+	</script>
+
+	<!-- Load JS libraries: jQuery, bootstrap, D3 -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/d3.min.js"></script>
+
+	<!-- Your implementation -->
+	<script src="js/main.js"></script>
+	<script src="js/barVis.js"></script>
+	<script src="js/heatMapVis.js"></script>
+
+</body>
+</html>
