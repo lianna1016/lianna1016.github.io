@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>CS171 - Final Project</title>
 
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
 
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700' rel='stylesheet' type='text/css'>
@@ -19,7 +19,8 @@
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<a href="#top">About</a>
-			<a href="#dashboard">WildFire Dashboard</a>
+			<a href="#timeline">WildFires Timeline</a>
+			<a href="#dashboard">WildFires and Climate Dashboard</a>
 			<a href="#heatmap">Causes of Wildfires</a>
 			<a href="#demographics">Demographics</a>
 			<a href="#citations">Citations?</a>
@@ -36,33 +37,149 @@
 					<span style="color: dimgrey; background: tan;">
 						Asking the Burning Questions: Visualizing The West Coast’s Devastating "New Normal"
 					</span><br><br>
-					<span style="color: dimgrey; background: tan; font-size:32px;">
+					<span style="color: dimgrey; background: tan; font-size:30px;">
 						By: Katherine Deng, Anna Li, and Christina Wang
 					</span>
 				</div>
 				</section>
 
-				<!--dashboard-->
-				<section style="height: 100vh;"><a name="dashboard"></a>
-					<img style="height: 96vh; width: 100%;" src="img/dashboard.png" alt="Dashboard Picture.">
+				<p>Placeholder for Text Introduction</p>
+				<p>In this project, we will analyze and visualize the wildfires that have been plaguing the West Coast
+					in recent years. For each of the past few years, California, Oregon, Colorado, and other West Coast
+					states have been hit by their worst wildfire seasons in modern history. Millions of acres have been
+					destroyed, thousands of residents have been forced to relocate, and numerous lives have been lost.
+					These tragedies have also sparked a fierce national conversation on climate change, and intense
+					fears about the inhabitability of a warmer world. Our goal with this project is to better understand
+					and visualize West Coast wildfires - their prevalence, spread, origins, impacts, and public
+					perception, and how these have all changed over time. As a starting point for our project, we will
+					work with official government wildfire datasets, such as the California Fire Perimeters dataset
+					published by Cal Fire, and the Spatial Wildfire Occurrence dataset published by the US Forest
+					Service. Moving forward, we may also consider linking county-level demographic data, to better
+					understand the people who are most affected under this devastating “New Normal”.</p>
+
+<!--				<p>We can see this spike in wildfire prevalence using the animated timeline map below.</p>-->
+<!--				<p>Animated Fires Timeline</p>-->
+<!--				<img style="height: 50vh;" src="img/timeline.png" alt="Animated Timeline">-->
+<!--				<div id="temps-line" style="height: 50vh"></div>-->
+
+				<p>What are the wildfire trends taking place? </p>
+				<p>Now what's causing this? Is it climate change?</p>
+				<p>What about possible human sources?</p>
+
+				<!--heatmap-->
+				<section style="height: 100vh; width: 150vh; position:relative; left:80px; left: -100px"><a name="dashboard"></a>
+					<!-- WRAPPER -->
+					<div class="container-fluid" style="height: 100vh; padding-top: 1vh">
+						<div class="row">
+							<div class="col-10 offset-1" style="border: thin solid grey; border-radius: 5px;">
+
+								<!-- HEADING -->
+								<div class="row d-flex justify-content-center" style="height: 10vh; padding: 0; background: #bdbdbd;">
+									<div class="align-self-center">
+										<h1>California Wildfire and Climate Change Dashboard</h1>
+									</div>
+								</div>
+
+								<!-- CONTENT -->
+								<div class="row" style="height: 70vh; background: white; padding: 0;">
+
+									<!-- LEFT -->
+									<div class="col-7">
+										<div class="row" style="background: lightgrey;">
+											<div id="stateCarousel" class="carousel slide" data-ride="carousel" style=" width: 100%">
+												<div class="carousel-inner">
+
+													<!-- TABLE -->
+													<div class="carousel-item">
+														<div class="col">
+															<div class="row" style="height: 70vh; background: lightgrey; padding: 1vh">
+																<div id="tableDiv" style="overflow-y: scroll; height: 100%; width:100%; padding: 20px; border: thin solid grey; border-radius: 5px; background: rgba(64,64,64,0.4);">
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<!-- MAP -->
+													<div class="carousel-item active">
+														<div class="col">
+															<div class="row" style="height: 70vh; background: lightgrey; padding: 1vh;">
+																<div id="mapDiv" style="height: 100%; width:100%; border: thin solid grey; border-radius: 5px; background: rgba(64,64,64,0.4);">
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- RIGHT -->
+									<div class="col-5">
+										<div class="row" style="height: 20%; background: lightgrey; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 1vh">
+											<div class="col" style="border: thin solid grey; border-radius: 5px; background: rgba(64,64,64,0.4)">
+												<div class="row" style="height: 100%">
+													<div class="col-4">
+														<div class="row justify-content-center" style="height: 100%">
+															<button class="btn btn-dark align-self-center" type="button" onclick="switchView()">switch view</button>
+														</div>
+													</div>
+													<div class="col-8">
+														<div class="row justify-content-center" style="height: 100%">
+															<!--											<p class="align-self-center" >TODO</p>-->
+															<select id='categorySelector' class="custom-select align-self-center" style="width: 50%" onchange="categoryChange()">
+																<option value="all" selected>All Fire Causes</option>
+																<option value="man">Fires Caused by Man</option>
+																<option value="natural">Fires from Natural Causes</option>
+																<option value="other">Fires Caused by Other / Unknown</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row justify-content-center" style="height: 40%; background: lightgrey; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 0vh">
+											<div id="barchart" class="align-self-center" style="height: 100%; width:100%; border: thin solid grey; border-radius: 5px; background: rgba(64,64,64,0.4)">
+											</div>
+										</div>
+										<div class="row justify-content-center" style="height: 40%; background: lightgrey; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 0vh">
+											<div id="barchart2" class="align-self-center" style="height: 100%; width:100%; border: thin solid grey; border-radius: 5px; background: rgba(64,64,64,0.4)">
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="row" style="height: 18vh; background: #bdbdbd; padding: 0; border: 0">
+									<div id="brushDiv" style="height: 100%; width:100%;"></div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
 				</section>
+
+				<div style="height:4vh;"></div>
+				<p>Placeholder for Text </p>
+				<p>Add text here</p>
+				<div style="height:4vh;"></div>
 
 				<!--heatmap-->
 				<section style="height: 100vh;"><a name="heatmap"></a>
-					<div id="cause-bar" style="height: 50vh"></div>
-					<div id="heat-map" style="height: 50vh"></div>
+					<div id="cause-bar" style="height: 48vh"></div>
+					<div id="heat-map" style="height: 48vh"></div>
 				</section>
 
+				<p>Who are the people most impacted by these wildfires?</p>
 				<!--parallel sets-->
 				<section style="height: 100vh;"> <a name="demographics"></a>
-					<img style="height: 96vh; width: 100%;" src="img/parallel_sets.png" alt="Parallel Sets Picture.">
+					<div id="sankey" style="height: 100vh; width: 100%;"></div>
 				</section>
 
 				<!--citations-->
 				<section style="height: 100vh;"> <a name="citations"></a>
-					HI :D
-					<img style="height: 50vh;" src="img/alpaca.jpg" alt="hehe">
+					Citations
 				</section>
+
 
 			</article>
 		</div>
@@ -71,12 +188,12 @@
 	<script>
 		function openNav() {
 			document.getElementById("mySidenav").style.width = "250px";
-			document.getElementById("main").style.marginLeft = "250px";
+			//document.getElementById("main").style.marginLeft = "250px";
 		}
 
 		function closeNav() {
 			document.getElementById("mySidenav").style.width = "0";
-			document.getElementById("main").style.marginLeft= "0";
+			//document.getElementById("main").style.marginLeft= "0";
 		}
 	</script>
 
@@ -86,10 +203,28 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/d3.min.js"></script>
 
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<script src="https://d3js.org/topojson.v2.min.js"></script>
+	<script src="https://d3js.org/d3-geo.v1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+
+	<script src="https://unpkg.com/d3-array@1"></script>
+	<script src="https://unpkg.com/d3-collection@1"></script>
+	<script src="https://unpkg.com/d3-path@1"></script>
+	<script src="https://unpkg.com/d3-shape@1"></script>
+	<script src="https://unpkg.com/d3-sankey@0"></script>
+
 	<!-- Your implementation -->
 	<script src="js/main.js"></script>
 	<script src="js/barVis.js"></script>
+	<script src="js/barVisDash.js"></script>
+	<script src="js/brushVis.js"></script>
+	<script src="js/dataTable.js"></script>
+	<script src="js/fireDictionary.js"></script>
 	<script src="js/heatMapVis.js"></script>
+	<script src="js/Sets.js"></script>
+	<script src="js/mapVis.js"></script>
+	<script src="js/helpers.js"></script>
 
 </body>
 </html>

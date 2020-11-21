@@ -7,11 +7,6 @@
     font-size: 12px;
 }
 
-
-
-
-
-
 /*navbar stuff start*/
 .centered {
     position: absolute;
@@ -66,3 +61,27 @@
     .sidenav a {font-size: 18px;}
 }
 /*navbar stuff end*/
+
+/*dashboard formatting*/
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    height: 28px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteeldarkred;
+    border-radius: 8px;
+}
+.legendSize text.label {
+    fill: black;
+}
+.table {
+    font-size: 0.7em;
+}
+.tiptext{
+    text-align: left;
+}
+#mapSelection{
+    font-size: 1.5em;
+}

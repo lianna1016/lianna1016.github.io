@@ -70,7 +70,7 @@ class HeatMapVis {
                 const i0 = d3.bisectRight(range, selection[0]);
                 const i1 = d3.bisectRight(range, selection[1]);
                 console.log(i0 + 1991, i1+1991)
-                selectedTimeRange = [i0 + 1991, i1+1991];
+                selectedTimeRangeHeatMap = [i0 + 1991, i1+1991];
                 myBarVis.wrangleData();
                 changeTitle();
             } else {
@@ -81,7 +81,7 @@ class HeatMapVis {
 
         function changeTitle(){
             vis.svg.selectAll('.heatmap-title')
-                .text("HeatMap of Fire Causes and Year - Selected: " + selectedTimeRange[0] + " to " + selectedTimeRange[1] )
+                .text("HeatMap of Fire Causes and Year - Selected: " + selectedTimeRangeHeatMap[0] + " to " + selectedTimeRangeHeatMap[1] )
         }
 
         //Append a defs (for definition) element to your SVG

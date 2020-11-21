@@ -74,8 +74,8 @@ class BarVis {
         });
         console.log(vis.data)
 
-        let start = selectedTimeRange[0];
-        let end = selectedTimeRange[1];
+        let start = selectedTimeRangeHeatMap[0];
+        let end = selectedTimeRangeHeatMap[1];
         vis.helperData = vis.data.filter(function(d) {
             // date is between start and end
             return end >= d.year && start <= d.year ;
@@ -102,7 +102,7 @@ class BarVis {
         let vis = this;
 
         vis.svg.selectAll('.bar-title')
-            .text("Causes of Fires in United States - " + selectedTimeRange[0] + " to " + selectedTimeRange[1])
+            .text("Causes of Fires in United States - " + selectedTimeRangeHeatMap[0] + " to " + selectedTimeRangeHeatMap[1])
 
         vis.x.domain(vis.displayData.map(d=> d.cause));
         vis.y.domain([0, d3.max(vis.displayData, d => d.counts)])
