@@ -1,29 +1,21 @@
-,best_worst_labels,gender_labels,race_labels,POP
-1,WORST50,FEMALE,WHITE,7012062
-2,WORST50,FEMALE,BLACK,703635
-3,WORST50,FEMALE,HISPANIC,4362230
-4,WORST50,FEMALE,NATIVE_AM,169963
-5,WORST50,FEMALE,ASIAN,1152111
-6,WORST50,FEMALE,NATIVE_HI,35040
-7,WORST50,FEMALE,TWO_OR_MORE,322355
-8,WORST50,MALE,WHITE,7040761
-9,WORST50,MALE,BLACK,672418
-10,WORST50,MALE,HISPANIC,4408037
-11,WORST50,MALE,NATIVE_AM,175268
-12,WORST50,MALE,ASIAN,1019091
-13,WORST50,MALE,NATIVE_HI,35047
-14,WORST50,MALE,TWO_OR_MORE,315249
-15,BEST50,FEMALE,WHITE,7151329
-16,BEST50,FEMALE,BLACK,580187
-17,BEST50,FEMALE,HISPANIC,3380115
-18,BEST50,FEMALE,NATIVE_AM,149946
-19,BEST50,FEMALE,ASIAN,2055950
-20,BEST50,FEMALE,NATIVE_HI,65309
-21,BEST50,FEMALE,TWO_OR_MORE,469482
-22,BEST50,MALE,WHITE,7220587
-23,BEST50,MALE,BLACK,596517
-24,BEST50,MALE,HISPANIC,3424498
-25,BEST50,MALE,NATIVE_AM,154685
-26,BEST50,MALE,ASIAN,1883793
-27,BEST50,MALE,NATIVE_HI,64409
-28,BEST50,MALE,TWO_OR_MORE,467029
+"","best_worst_labels","gender_labels","race_labels","POP"
+"1","Most Affected","Female","White","7012062"
+"2","Most Affected","Female","Hispanic","4362230"
+"3","Most Affected","Female","Asian","1152111"
+"4","Most Affected","Female","Black","703635"
+"5","Most Affected","Female","Other","527358"
+"6","Most Affected","Male","White","7040761"
+"7","Most Affected","Male","Hispanic","4408037"
+"8","Most Affected","Male","Asian","1019091"
+"9","Most Affected","Male","Black","672418"
+"10","Most Affected","Male","Other","525564"
+"11","Least Affected","Female","White","7151329"
+"12","Least Affected","Female","Hispanic","3380115"
+"13","Least Affected","Female","Asian","2055950"
+"14","Least Affected","Female","Black","580187"
+"15","Least Affected","Female","Other","684737"
+"16","Least Affected","Male","White","7220587"
+"17","Least Affected","Male","Hispanic","3424498"
+"18","Least Affected","Male","Asian","1883793"
+"19","Least Affected","Male","Black","596517"
+"20","Least Affected","Male","Other","686123"

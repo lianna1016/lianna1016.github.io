@@ -32,7 +32,6 @@ class BarVis {
         // add title
         vis.svg.append('text')
             .attr('class', 'title bar-title')
-            //.append('text')
             .text('Title for Barchart')
             .attr('transform', `translate(${vis.width / 2}, 10)`)
             .attr('text-anchor', 'middle');
@@ -131,7 +130,7 @@ class BarVis {
 
         label.enter()
             .append("text")
-            .attr("class","label")
+            .attr("class", "label")
             .merge(label)
             .transition()
             .duration(1000)
@@ -153,8 +152,8 @@ class BarVis {
                 .style("top", event.pageY + "px")
                 .html(`
                      <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-                         <h3>${d.cause}<h3>
-                         <h4>Counts: ${d.counts}</h4>
+                         <h5>${d.cause}<h5>
+                         <h6>Counts: ${d.counts}</h6>
                      </div>`);
         }
 
@@ -185,7 +184,4 @@ class BarVis {
             .duration(1000)
             .call(vis.yAxis);
     }
-
-
-
 }

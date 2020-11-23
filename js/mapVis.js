@@ -6,23 +6,18 @@ class MapVis {
 
     constructor(parentElement,fireData, fireDataDisplay) {
         this.parentElement = parentElement;
-        // this.geoData = geoData;
-        // this.covidData = covidData;
-        // this.usaData = usaData;
-        // this.stateCentroids = stateCentroids;
-        this.commaFormatter = d3.format(",.2f")
         this.fires = fireData;
         this.displayData = fireDataDisplay;
+
+        this.commaFormatter = d3.format(",.2f")
         this.parseYear = d3.timeParse("%Y")
         this.man = [2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 18, 19]
         this.natural = [1, 17]
         this.other = [0, 9, 14]
         this.all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ,16, 17, 18, 19]
 
-
         // parse date method
         this.parseDate = d3.timeParse("%m/%d/%Y");
-
 
         this.initVis()
     }
@@ -32,7 +27,7 @@ class MapVis {
         d3.select('#mapvis').remove()
 
 
-        vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
+        vis.margin = {top: 0, right: 0, bottom: 0, left: 0};
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
@@ -149,17 +144,6 @@ class MapVis {
             vis.displayData.objects.fires_great_5k.geometries = filteredData
         }
 
-
-
-        // prepare covid data by grouping all rows by state
-        // let covidDataByState = Array.from(d3.group(filteredData, d => d.state), ([key, value]) => ({key, value}))
-
-        // have a look
-        // console.log(covidDataByState)
-        // console.log(vis.fires.objects.fires_great_5k.geometries)
-        // let test = {fires_great_5k: filteredData}
-        // console.log(topojson.feature(vis.fires, vis.fires.objects.fires_great_5k))
-
         // init final data structure in which both data sets will be merged into
         vis.fireDict = []
         vis.fireList = []
@@ -201,7 +185,7 @@ class MapVis {
 
         vis.svg.append("g")
             .attr("class", "legendSize")
-            .attr("transform", "translate(" + ((vis.width)-130) + "," + (80) + ")")
+            .attr("transform", "translate(" + ((vis.width)-130) + "," + (50) + ")")
             //  .style('fill', 'grey')
         let comma_format = d3.format(",.0f")
 
@@ -210,8 +194,8 @@ class MapVis {
         vis.legendSize = d3.legendSize()
             .scale(vis.radius)
             .shape('circle')
-            .shapePadding(5)
-            .labelOffset(20)
+            .shapePadding(1)
+            .labelOffset(10)
             .labelFormat(comma_format)
             .title("Acres Burned")
             .orient('vertical');
@@ -232,7 +216,7 @@ class MapVis {
 
         vis.svg.append("g")
             .attr("class", "legendOrdinal")
-            .attr("transform", "translate(" + ((vis.width)-120) + "," + ((vis.height)-150) + ")")
+            .attr("transform", "translate(" + ((vis.width)-120) + "," + ((vis.height)-100) + ")")
 
         let legendOrdinal = d3.legendColor()
             //d3 symbol creates a path-string, for example
@@ -294,7 +278,6 @@ class MapVis {
                     .html(`
                         <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
                              <h5>Fire Name: ${JSON.stringify(d.properties.name).replace(/\"/g, "")}</h5>
-                              <div class="tiptext">Fire Name: ${JSON.stringify(d.properties.name)}</div>
                               <div class="tiptext">Acres: ${JSON.stringify(d.properties.acres)}</div>
                               <div class="tiptext">Year: ${JSON.stringify(d.properties.year)}</div>
                               <div class="tiptext">Cause: ${JSON.stringify(d.properties.cause)}</div>

@@ -1,11 +1,28 @@
-.title{
+.title {
     font-weight: bold;
     font-size: 16px;
 }
 
+body {
+    font-family: Charter;
+}
+
+.bar-tooltip {
+    fill: #bd4147;
+    background: #6c757d;
+    font-size: 10px;
+}
+
 .label {
     font-size: 12px;
+    font-family: Charter;
 }
+
+.axis {
+    font-family: Charter;
+    font-size: 11px;
+}
+
 
 /*navbar stuff start*/
 .centered {
@@ -69,7 +86,7 @@
     width: 200px;
     height: 28px;
     padding: 2px;
-    font: 12px sans-serif;
+    font: 12px Charter;
     background: lightsteeldarkred;
     border-radius: 8px;
 }
@@ -84,4 +101,8 @@
 }
 #mapSelection{
     font-size: 1.5em;
+}
+
+h5, h6 {
+    font-size: 12px;
 }
