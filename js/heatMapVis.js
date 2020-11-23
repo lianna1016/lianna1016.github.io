@@ -17,7 +17,7 @@ class HeatMapVis {
         let vis = this;
         console.log(vis.data)
 
-        vis.margin = {top: 60, right: 80, bottom: 50, left: 130};
+        vis.margin = {top: 60, right: 90, bottom: 50, left: 130};
 
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
@@ -196,12 +196,14 @@ class HeatMapVis {
 
         vis.svg.append("g")
             .style("font-size", 14)
+            .style("font-family", "Charter")
             .attr("transform", "translate(0," + vis.height + ")")
             .call(d3.axisBottom(vis.x).tickSize(0))
             .select(".domain").remove()
 
         vis.svg.append("g")
             .style("font-size", 15)
+            .style("font-family", "Charter")
             .call(d3.axisLeft(vis.y).tickSize(0))
             .select(".domain").remove()
 
