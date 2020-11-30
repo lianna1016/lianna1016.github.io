@@ -10,7 +10,7 @@ class BarVis {
         this.parentElement = parentElement;
         this.data = Data;
         this.displayData = [];
-
+        this.total = 0;
         this.initVis()
     }
 
@@ -33,7 +33,13 @@ class BarVis {
         vis.svg.append('text')
             .attr('class', 'title bar-title')
             .text('Title for Barchart')
-            .attr('transform', `translate(${vis.width / 2}, 10)`)
+            .attr('transform', `translate(${vis.width / 2.2}, 0)`)
+            .attr('text-anchor', 'middle');
+
+        vis.svg.append('text')
+            .attr('class', 'total')
+            .text('Title for total')
+            .attr('transform', `translate(${vis.width/ 2.2}, 20)`)
             .attr('text-anchor', 'middle');
 
         // Scales
@@ -60,6 +66,115 @@ class BarVis {
         // append tooltip
         vis.tooltip = d3.select("body").append('div')
             .attr('class', "tooltip")
+
+
+        vis.box = vis.svg.append("rect")
+            .attr("width", 170)
+            .attr("height", 40)
+            .style("fill", "darkred")
+            .attr('transform', `translate (${3*vis.width/4-5}, ${-15})`)
+
+
+        vis.svg.append('g')
+            .append("text")
+            .attr('x', 3*vis.width/4)
+            .attr('y', 20)
+            .style("font-size", 16)
+            .style('font-weight', 'bold')
+            .attr("dy", "-1em")
+            .style("fill", "white")
+            .text('Click to See Some of')
+            .on("click", function(event, d){
+                console.log('hi')
+                d3.selectAll('.takeaways')
+                    .attr('opacity', 1)
+            })
+
+        vis.svg.append('g')
+            .append("text")
+            .attr('x', 3*vis.width/4)
+            .attr('y', 20)
+            .style("font-size", 16)
+            .style('font-weight', 'bold')
+            .style("fill", "white")
+            .text('our Main Takeaways')
+            .on("click", function(event, d){
+                console.log('hi')
+                d3.selectAll('.takeaways')
+                    .attr('opacity', 1)
+            })
+
+        vis.svg.append('g')
+            .attr('class', 'takeaways')
+            .attr('opacity', '0')
+            .append("text")
+            .attr('x', 3*vis.width/4)
+            .attr('y', 22)
+            .style("font-size", 15)
+            .attr("dy", "1.5em")
+            .text("1. Debris burning, Arson, and Lightning  ")
+
+
+        vis.svg.append('g')
+            .attr('class', 'takeaways')
+            .attr('opacity', '0')
+            .append("text")
+            .attr('x', 3*vis.width/4)
+            .attr('y', 22)
+            .style("font-size", 15)
+            .attr("dy", "2.5em")
+            .text("are consistently the top 3 fire starters.")
+
+        vis.svg.append('g')
+            .attr('class', 'takeaways')
+            .attr('opacity', '0')
+            .append("text")
+            .attr('x', 3*vis.width/4)
+            .attr('y', 22)
+            .style("font-size", 15)
+            .attr("dy", "4em")
+            .text("2. There is a positive trend in the total")
+
+        vis.svg.append('g')
+            .attr('class', 'takeaways')
+            .attr('opacity', '0')
+            .append("text")
+            .attr('x', 3*vis.width/4)
+            .attr('y', 22)
+            .style("font-size", 15)
+            .attr("dy", "5em")
+            .text("number of fires over time.")
+
+        vis.svg.append('g')
+            .attr('class', 'takeaways')
+            .attr('opacity', '0')
+            .append("text")
+            .attr('x', 3*vis.width/4)
+            .attr('y', 22)
+            .style("font-size", 15)
+            .attr("dy", "6.5em")
+            .text("3. Many of these fires are man-made, and ")
+
+        vis.svg.append('g')
+            .attr('class', 'takeaways')
+            .attr('opacity', '0')
+            .append("text")
+            .attr('x', 3*vis.width/4)
+            .attr('y', 22)
+            .style("font-size", 15)
+            .attr("dy", "7.5em")
+            .text("steps can be taken in order to prevent ")
+
+        vis.svg.append('g')
+            .attr('class', 'takeaways')
+            .attr('opacity', '0')
+            .append("text")
+            .attr('x', 3*vis.width/4)
+            .attr('y', 22)
+            .style("font-size", 15)
+            .attr("dy", "8.5em")
+            .text("them in the future. ")
+
 
         this.wrangleData();
     }
@@ -90,6 +205,12 @@ class BarVis {
             return res;
         }, {});
 
+        vis.total = 0;
+        vis.displayData.forEach(function(d){
+            vis.total += d.counts
+        });
+        console.log(vis.total);
+
         vis.displayData.sort( (a, b) => {
             return b.counts - a.counts;
         });
@@ -99,6 +220,9 @@ class BarVis {
 
     updateVis(){
         let vis = this;
+
+        vis.svg.selectAll('.total')
+            .text("Total Number of Fires: " + vis.total)
 
         vis.svg.selectAll('.bar-title')
             .text("Causes of Fires in United States - " + selectedTimeRangeHeatMap[0] + " to " + selectedTimeRangeHeatMap[1])
@@ -183,5 +307,9 @@ class BarVis {
             .transition()
             .duration(1000)
             .call(vis.yAxis);
+
+
+
+
     }
 }

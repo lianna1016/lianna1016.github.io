@@ -17,7 +17,7 @@ class HeatMapVis {
         let vis = this;
         console.log(vis.data)
 
-        vis.margin = {top: 60, right: 90, bottom: 50, left: 130};
+        vis.margin = {top: 40, right: 160, bottom: 30, left: 130};
 
         vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
@@ -41,8 +41,7 @@ class HeatMapVis {
         vis.x = d3.scaleBand()
             .range([ 0, vis.width ])
             //.domain(vis.data.map(d=> d.year))
-            .padding(0.05);
-
+            .padding(0.05)
 
         vis.y = d3.scaleBand()
             .range([ vis.height, 0 ])
@@ -62,7 +61,17 @@ class HeatMapVis {
 
         vis.brush = d3.brushX()
             .extent([[0,0], [vis.width, vis.height]])
-            .on("brush", brushed);
+            .on("brush", brushed)
+
+        //     .on("dblclick", dblclicked);
+        //
+        // function dblclicked() {
+        //     selectedTimeRangeHeatMap = [1992, 2015]
+        //     myBarVis.wrangleData();
+        //     changeTitle();
+        //     const selection = d3.brushSelection(this) ? null : vis.x.range();
+        //     d3.select(this).call(vis.brush.move, selection);
+        // };
 
         function brushed({selection}) {
             if (selection) {
@@ -110,10 +119,15 @@ class HeatMapVis {
             .attr("width", 200)
             .attr("height", 20)
             .style("fill", "url(#linear-gradient)")
-            .attr('transform', `translate (${vis.width+20}, ${vis.height-150}) rotate(-90)`);
+            .attr('transform', `translate (${vis.width+40}, ${vis.height-170}) rotate(-90)`);
+
+        vis.svg.append('g')
+            .append("text")
+            .attr('transform', `translate (${vis.width+30}, ${vis.height-180}) rotate(-90)`)
+            .text('Number of Fires');
 
         vis.yLegend = d3.scaleLinear()
-            .range([vis.height/2, vis.height/2+200]);
+            .range([0, 200]);
 
         vis.yAxis = d3.axisRight()
             .scale(vis.yLegend)
@@ -195,11 +209,17 @@ class HeatMapVis {
         };
 
         vis.svg.append("g")
-            .style("font-size", 14)
+            .style("font-size", 12)
             .style("font-family", "Charter")
             .attr("transform", "translate(0," + vis.height + ")")
             .call(d3.axisBottom(vis.x).tickSize(0))
             .select(".domain").remove()
+
+        // let ticks = d3.selectAll(".x tick text");
+        //
+        // ticks.each(function(_, i) {
+        //     if (i % 3 != 0) d3.select(this).remove();
+        // });
 
         vis.svg.append("g")
             .style("font-size", 15)
@@ -207,16 +227,81 @@ class HeatMapVis {
             .call(d3.axisLeft(vis.y).tickSize(0))
             .select(".domain").remove()
 
-        vis.svg.append("g")
-            .attr("class", "x brush")
+        vis.gbrush = vis.svg.append("g")
+            .attr("class", "brush")
             .call(vis.brush)
-            .selectAll("rect")
+            //.selectAll("rect")
             .attr("y", -6)
-            .attr("height", vis.height + 7);
+            .attr("height", vis.height + 7)
 
+        vis.svg.append("rect")
+            .attr("width", 85)
+            .attr("height", 25)
+            .style("fill", "darkred")
+            .attr('transform', `translate (${vis.width+16}, ${vis.height-20}) `);
+
+        vis.svg.append('g')
+            .append("text")
+            .attr('x', vis.width + 20)
+            .attr('y', vis.height - 4 )
+            .text('Reset Brush')
+            .style("fill", "white")
+            .style("font-size", 15)
+            .on("click", function(event, d){
+                selectedTimeRangeHeatMap = [1992, 2015]
+                myBarVis.wrangleData();
+                changeTitle();
+                d3.selectAll(".brush").call(vis.brush.move, null)
+            })
+
+        vis.svg.append('g')
+            .append("text")
+            .attr('x', vis.width + 15)
+            .attr('y', vis.height - 90)
+            .style("font-size", 15)
+            .attr("dy", "0em")
+            .text("Brush over the ")
+
+        vis.svg.append('g')
+            .append("text")
+            .attr('x', vis.width + 15)
+            .attr('y', vis.height - 90)
+            .style("font-size", 15)
+            .attr("dy", "1em") // you can vary how far apart it shows up
+            .text("years to see how ")
+
+        vis.svg.append('g')
+            .append("text")
+            .attr('x', vis.width + 15)
+            .attr('y', vis.height - 90)
+            .style("font-size", 15)
+            .attr("dy", "2em") // you can vary how far apart it shows up
+            .text("the causes of fires ")
+
+        vis.svg.append('g')
+            .append("text")
+            .attr('x', vis.width + 15)
+            .attr('y', vis.height - 90)
+            .style("font-size", 15)
+            .attr("dy", "3em") // you can vary how far apart it shows up
+            .text("have changed")
+
+        vis.svg.append('g')
+            .append("text")
+            .attr('x', vis.width + 15)
+            .attr('y', vis.height - 90)
+            .style("font-size", 15)
+            .attr("dy", "4em") // you can vary how far apart it shows up
+            .text("over time.")
+
+        function changeTitle(){
+            vis.svg.selectAll('.heatmap-title')
+                .text("HeatMap of Fire Causes and Year - Selected: " + selectedTimeRangeHeatMap[0] + " to " + selectedTimeRangeHeatMap[1] )
+            console.log('hi')
+        }
 
         vis.svg.select(".y-axis")
-            .attr("transform", `translate (${vis.width+40}, -176)`)
+            .attr("transform", `translate (${vis.width+60}, ${vis.height-140-230})`)
             .transition()
             .duration(1000)
             .call(vis.yAxis);

@@ -113,7 +113,7 @@ class MapVis {
             vis.fires.objects.fires_great_5k.geometries.forEach(row => {
                 // and push rows with proper dates into filteredData
                 if (selectedTimeRange[0]<= vis.parseYear(row.properties.year)&& vis.parseYear(row.properties.year) <= selectedTimeRange[1]) {
-                    if (selectedCategory === 'all' | row.properties.cause in vis[selectedCategory]){
+                    if (selectedCategory === 'all' | vis[selectedCategory].includes(row.properties.cause)){
                         filteredData.push(row);
                     }
 
@@ -216,7 +216,7 @@ class MapVis {
 
         vis.svg.append("g")
             .attr("class", "legendOrdinal")
-            .attr("transform", "translate(" + ((vis.width)-120) + "," + ((vis.height)-100) + ")")
+            .attr("transform", "translate(" + ((vis.width)-120) + "," + (2*vis.height/3) + ")")
 
         let legendOrdinal = d3.legendColor()
             //d3 symbol creates a path-string, for example
