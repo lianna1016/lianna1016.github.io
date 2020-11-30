@@ -16,18 +16,9 @@
 
 	<div class="container">
 
-		<!--nav bar-->
-		<div id="mySidenav" class="sidenav">
-			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="#top">About</a>
-			<a href="#dashboard">WildFires Dashboard</a>
-			<a href="#heatmap">Wildfire Causes</a>
-			<a href="#demographics">Affected Demographics</a>
-			<a href="#citations">Citations</a>
-		</div>
+
 
 		<div id="main">
-			<span style="font-size:15px;cursor:pointer;position: fixed; left: 20px;" onclick="openNav()">&#9776; Menu</span>
 			<article>
 
 				<div id="fullpage">
@@ -35,19 +26,24 @@
 						<!--title page-->
 						<section style="height: 100vh; width: 100%;"><a name="top"></a>
 							<img style="height: 96vh; width: 100%; opacity: 0.5;" src="img/wildfire.jpg" alt="Wildfire Picture.">
-							<div class="centered">
-							<span style="color: black; font-size: 48px; width: 100%; text-anchor: middle;">
-								Asking the Burning Questions: Visualizing The West Coast’s Devastating New Normal
+							<div class="centered" style="width: 100%; text-align: center;">
+							<span style="color: black; font-size: 48px;">
+								Asking the Burning Questions: <br>
+								<div style="height: 4vh"></div>
+								Visualizing The West Coast’s <br> Devastating New Normal
 							</span><br><br>
 							</div>
 						</section>
 					</div>
+
 					<div class="section" id="section1">
+						<h2>Overview:</h2><br>
 						<p>For each of the past few years, California has been devastated by its worst wildfire season in modern history. Millions of acres have been
 							destroyed, thousands of residents have been forced to relocate, and numerous lives have been lost.
 							These tragedies have also sparked a fierce national conversation on climate change, and intense
 							fears about the inhabitability of a warmer world.</p>
 					</div>
+
 					<div class="section" id="section2">
 						<h4>What are the patterns in California's wildfires over time? How much is destroyed?</h4>
 						<h4>And why is this happening?</h4>
@@ -56,6 +52,7 @@
 						<p>Is it climate change?</p>
 						<p>Is it us?</p>
 					</div>
+
 					<div class="section fp-auto-height" id="section3">
 						<section style="height: 100vh;  position:relative; left:80px; left: -100px"><a name="dashboard"></a>
 							<!-- WRAPPER -->
@@ -148,20 +145,24 @@
 							</div>
 						</section>
 					</div>
-					<div class="section" id="section5">
+
+					<div class="section" id="section4">
 						<h4>How do we cause wildfires?</h4>
 					</div>
-					<div class="section" id="section6">
+
+					<div class="section" id="section5">
 						<!--heatmap-->
 						<section style="height: 100vh;"><a name="heatmap"></a>
 							<div id="cause-bar" style="height: 48vh"></div>
 							<div id="heat-map" style="height: 48vh"></div>
 						</section>
 					</div>
-					<div class="section" id="section7">
+
+					<div class="section" id="section6">
 						<h4>Who are the people most impacted by these wildfires?</h4>
 					</div>
-					<div class="section" id="section8">
+
+					<div class="section" id="section7">
 						<!--parallel sets-->
 						<section style="height: 100vh;"> <a name="demographics"></a>
 							<p>Hover over each path to see how the populations of the most and least affected counties are distributed.</p>
@@ -169,10 +170,38 @@
 							<div id="sankey" style="height: 80vh; width: 100%;"></div>
 						</section>
 					</div>
-					<div class="section" id="section9">
+
+					<div class="section" id="section8">
 						<!--citations-->
-						<section style="height: 10vh;"> <a name="citations"></a>
-							<h4>Citations</h4>
+						<section> <a name="citations"></a>
+							<h2>Project By:</h2>
+							Katherine Deng, Anna Li, Christina Wang
+							<div style="height: 2vh;"></div>
+
+							<h2>Data Sources: </h2>
+							<ul>
+								<li>US fires data, 1992-2015</li>
+								<ul style="padding-left:20px">
+									<li>https://www.kaggle.com/captcalculator/wildfire-exploratory-analysis</li>
+								</ul>
+								<li>CA fires descriptions, 2013-2020, information on cause, agency, etc. </li>
+								<ul style="padding-left:20px">
+									<li>https://www.kaggle.com/ananthu017/california-wildfire-incidents-20132020</li>
+								</ul>
+								<li> CA fire polygons</li>
+								<ul style="padding-left:20px">
+									<li>https://github.com/neuroslice/California-Wildfires/blob/master/caFire.json</li>
+								</ul>
+								<li> CA 2010s census demographic data, with information on age/race/sex/income</li>
+								<ul style="padding-left:20px">
+									<li>https://www.census.gov/data/datasets/time-series/demo/popest/2010s-counties-detail.html</li>
+								</ul>
+							</ul>
+							<div style="height: 2vh;"></div>
+
+							<h2> Link to our Process Book: </h2>
+							<a target="_blank" href="https://docs.google.com/document/d/1mHyz-C9D01MB53XVFC7Ug7ethV3TCDp4PPStJP9uRtc/edit?usp=sharing"> Here is our Process Book!</a>
+
 						</section>
 					</div>
 
@@ -202,7 +231,7 @@
 
 			//Navigation
 			menu: '#menu',
-			navigation: false,
+			navigation: true,
 			navigationPosition: 'right',
 			navigationTooltips: ['firstSlide', 'secondSlide'],
 			showActiveTooltip: false,

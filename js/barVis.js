@@ -133,7 +133,7 @@ class BarVis {
             .attr('y', 22)
             .style("font-size", 15)
             .attr("dy", "4em")
-            .text("2. There is a positive trend in the total")
+            .text("2. There is an overall positive trend in the ")
 
         vis.svg.append('g')
             .attr('class', 'takeaways')
@@ -143,7 +143,7 @@ class BarVis {
             .attr('y', 22)
             .style("font-size", 15)
             .attr("dy", "5em")
-            .text("number of fires over time.")
+            .text("total number of fires over time.")
 
         vis.svg.append('g')
             .attr('class', 'takeaways')
