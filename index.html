@@ -9,14 +9,14 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/fullpage.css">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.34/esri/css/esri.css">
+
 
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
 	<div class="container">
-
-
 
 		<div id="main">
 			<article>
@@ -36,12 +36,20 @@
 						</section>
 					</div>
 
-					<div class="section" id="section1">
+					<div class="section" id="section1" >
 						<h2>Overview:</h2><br>
 						<p>For each of the past few years, California has been devastated by its worst wildfire season in modern history. Millions of acres have been
 							destroyed, thousands of residents have been forced to relocate, and numerous lives have been lost.
 							These tragedies have also sparked a fierce national conversation on climate change, and intense
 							fears about the inhabitability of a warmer world.</p>
+						<p>Here we can see the active wildfires in the United States and the winds that are exacerbating the problems by fueling
+							the fires and carrying the smoke. </p>
+
+						<div id="mapCanvas" style="height:70vh;">
+						</div>
+						<span id="wind-instruction">Click On Any Fire for more Information</span>
+						<span id="credit">Hourly Updated Wind and Fire Map - Inspired by <a href="https://github.com/cambecc/earth">Earth</a>, wind data from <a href="http://nomads.ncdc.noaa.gov/data.php?name=access#hires_weather_datasets">GFS</a>, wind open source on <a href="https://github.com/Esri/wind-js">Github</a>, fire open source on <a href="https://www.esri.com/arcgis-blog/products/arcgis-online/mapping/active-fires-visualization/">ArcGIS Fires Guide</a></span>
+
 					</div>
 
 					<div class="section" id="section2">
@@ -165,13 +173,45 @@
 					<div class="section" id="section7">
 						<!--parallel sets-->
 						<section style="height: 100vh;"> <a name="demographics"></a>
-							<p>Hover over each path to see how the populations of the most and least affected counties are distributed.</p>
-							<p>The black notch bisecting the bars indicates the midpoint - groups with orange flows crossing the midpoint represent disproportionately impacted demographics.</p>
-							<div id="sankey" style="height: 80vh; width: 100%;"></div>
+							<div class="row">
+								<div class="col-4" id="walkthrough"></div>
+								<div class="col-8" id="sankey" style="height: 80vh; width: 100%;"></div>
+							</div>
 						</section>
 					</div>
 
 					<div class="section" id="section8">
+						<!--parallel sets-->
+						<section style="height: 100vh;"> <a name="calltoaction"></a>
+							<br>
+							<br>
+							<br>
+							<p>We've seen that more frequent and more destructive fires are becoming the norm in California, that humans are a primary cause of wildfires, and that Hispanics are being disproportionately affected.</p>
+							<br>
+							<br>
+							<h4>What can we do to help those affected?</h4>
+							<ol>
+								<li>Donate money.</li>
+								<ul>
+									<li><a target="_blank" href="https://www.redcross.org/about-us/news-and-events/news/2018/california-wildfires-red-cross-helps-as-thousands-evacuate.html">American Red Cross</a></li>
+									<li><a target="_blank" href="https://www.calfund.org/wildfire-relief-fund/">California Community Foundation’s Wildlife Relief Fund</a></li>
+									<li><a target="_blank" href="https://www.cafirefoundation.org/programs/supplying-aid-to-victims-of-emergency/">California Fire Foundation</a></li>
+									<li><a target="_blank" href="https://www.unitedwayla.org/en/give/disaster-relief-fund/">United Way of Greater Los Angeles</a></li>
+								</ul>
+								<li>Adopt or foster a pet.</li>
+								<ul>
+									<li>Just as humans have been displaced by these fires, so have their pets. <a target="_blank" href="https://www.facebook.com/LAAnimalServices/">LA Animal Services</a> and other California-based shelters often post calls for fosters and adopters on their Facebook pages.</li>
+								</ul>
+								<li>Volunteer your time and skills.</li>
+								<ul>
+									<li><a target="_blank" href="http://www.caring-choices.org/">Caring Choices</a> is a Northern California-based
+										nonprofit which accepts applications from volunteers with medical backgrounds or other manual and technical skills - such as data entry, radio communications, or animal care - that are needed in the wake of these disasters.</li>
+								</ul>
+							</ol>
+						</section>
+					</div>
+
+					<div class="section" id="section9">
 						<!--citations-->
 						<section> <a name="citations"></a>
 							<h2>Project By:</h2>
@@ -233,14 +273,13 @@
 			menu: '#menu',
 			navigation: true,
 			navigationPosition: 'right',
-			navigationTooltips: ['firstSlide', 'secondSlide'],
 			showActiveTooltip: false,
 			slidesNavigation: false,
 			slidesNavPosition: 'bottom',
 
 			//Scrolling
 			css3: true,
-			scrollingSpeed: 300,
+			scrollingSpeed: 500,
 			autoScrolling: true,
 			easing: 'easeInOutCubic',
 			easingcss3: 'ease',
@@ -295,6 +334,17 @@
 	<script src="js/Sets.js"></script>
 	<script src="js/mapVis.js"></script>
 	<script src="js/helpers.js"></script>
+
+	<script>
+		var dojoConfig = {
+			paths: {
+				plugins: location.pathname.replace(/\/[^/]+$/, "") + "/plugins"
+			}
+		};
+	</script>
+	<script src="https://js.arcgis.com/3.34compact/"></script>
+	<script src="./js/wind-fire.js"></script>
+	<script src="./js/windy.js"></script>
 
 </body>
 </html>

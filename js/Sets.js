@@ -29,10 +29,169 @@ class Sets {
 
         // append tooltip
         vis.tooltip = d3.select("body").append('div')
-            .attr('class', "tooltip")
+            .attr('class', "tooltip");
+
+        // add slider for animated demo
+        vis.x = d3.scaleLinear()
+            .domain([0, 5])
+            .range([0, vis.width / 2])
+            .clamp(true);
+
+        vis.slider = vis.svg.append("g")
+            .attr("class", "slider")
+            .attr("transform", "translate(" + vis.margin.left + "," + (vis.height - 20) + ")");
+
+        vis.sliderStage = 0;
+        vis.h = 0;
+        let currentValue = 0;
+
+        // allow slider to modify chart for demo
+        vis.slider.append("line")
+            .attr("class", "track")
+            .attr("x1", vis.x.range()[0])
+            .attr("x2", vis.x.range()[1])
+            .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+            .attr("class", "track-inset")
+            .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+            .attr("class", "track-overlay")
+            .call(d3.drag()
+                .on("start.interrupt", function() { vis.slider.interrupt(); })
+                .on("drag", function(event) {
+                    currentValue = event.x;
+                    vis.h = vis.x.invert(currentValue);
+                    vis.moveSlider(vis.h);
+                }));
+
+        vis.slider.insert("g", ".track-overlay")
+            .attr("class", "ticks")
+            .attr("transform", "translate(0," + 18 + ")")
+            .selectAll("text")
+            .data(vis.x.ticks(4))
+            .enter().append("text")
+            .attr("x", vis.x)
+            .attr("text-anchor", "middle")
+            .text(function(d) { return d; });
+
+        vis.handle = vis.slider.insert("circle", ".track-overlay")
+            .attr("class", "handle")
+            .attr("r", 9);
+
+        vis.svgText = d3.select('#walkthrough').append('svg')
+            .attr('width', 500)
+            .attr('height', 500)
+            .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
+
+        vis.svgText.append("text")
+            .attr('x', 0)
+            .attr('y', 20)
+            .attr('class', 'id')
+            .append('svg:tspan')
+            .attr('x', 0)
+            .attr('dy', 5)
+            .text('Drag the slider below to start.')
 
         vis.wrangleData();
     }
+
+    moveSlider(h) {
+        let vis = this;
+        vis.handle.attr("cx", vis.x(h));
+
+        vis.h = Math.round(vis.h) + 1;
+
+        if (vis.sliderStage != vis.h) {
+
+            if (vis.sliderStage == 1) {
+                vis.svgText.append("text")
+                    .attr('x', 0)
+                    .attr('y', 60)
+                    .attr('class', 'id')
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 5)
+                    .text('Hover over each path to see how the populations')
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 20)
+                    .text('of the most and least affected counties')
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 20)
+                    .text('are distributed.')
+            }
+
+            if (vis.sliderStage == 2) {
+                vis.svgText.append("text")
+                    .attr('x', 0)
+                    .attr('y', 150)
+                    .attr('class', 'id')
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 5)
+                    .text('The black notch bisecting the bars indicates the')
+                    .attr('font-size', 12)
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 20)
+                    .text('midpoint - groups with orange flows crossing the midpoint')
+                    .attr('font-size', 12)
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 20)
+                    .text('represent disproportionately impacted demographics.')
+                    .attr('font-size', 12)
+            }
+
+            if (vis.sliderStage == 3) {
+                vis.svgText.append("text")
+                    .attr('x', 0)
+                    .attr('y', 250)
+                    .attr('class', 'id')
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 5)
+                    .text('Men and women are roughly equally affected by wildfires.')
+                    .attr("font-size", 12)
+            }
+
+            if (vis.sliderStage == 4) {
+                vis.svgText.append("text")
+                    .attr('x', 0)
+                    .attr('y', 300)
+                    .attr('class', 'id')
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 5)
+                    .text('Whites and Asians are relatively less affected.')
+                    .attr("font-size", 12)
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 20)
+                    .text("(The orange flows don't quite cross their midpoints.)")
+                    .attr('font-size', 10)
+                    .transition(100)
+            }
+
+            if (vis.sliderStage == 5) {
+                vis.svgText.append("text")
+                    .attr('x', 0)
+                    .attr('y', 350)
+                    .attr('class', 'id')
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 5)
+                    .text('Hispanics are relatively more affected.')
+                    .attr("font-size", 12)
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 20)
+                    .text("(More than half of Hispanics live in more affected counties.)")
+                    .attr('font-size', 10)
+            }
+        }
+
+        vis.sliderStage = vis.h;
+    };
 
     wrangleData() {
         let vis = this;
@@ -45,15 +204,13 @@ class Sets {
     }
 
 
-    // adapted from https://observablehq.com/@d3/parallel-sets
+    // parallel sets adapted from https://observablehq.com/@d3/parallel-sets
     updateVis() {
         let vis = this;
 
-        vis.keys = vis.displayData.columns.slice(1, -1)
+        vis.keys = vis.displayData.columns.slice(1, -1);
 
-        console.log(vis.keys);
-
-        vis.color = d3.scaleOrdinal(["Most Affected"], ["#fa5f43"]).unknown("#ccc")
+        vis.color = d3.scaleOrdinal(["Most Affected"], ["#fa5f43"]).unknown("#ccc");
 
         let index = -1;
         let nodes = [];
