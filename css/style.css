@@ -27,7 +27,7 @@ html,body {
 
 #wind-instruction {
     position: absolute;
-    bottom: 75px;
+    bottom: 50px;
     left: 10px;
     color: white;
     font-size: 14px;
@@ -35,7 +35,7 @@ html,body {
 
 #credit {
     position: absolute;
-    bottom: 50px;
+    bottom: 25px;
     left: 10px;
     color: white;
     font-size: 14px;
