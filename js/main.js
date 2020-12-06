@@ -114,7 +114,7 @@ function categoryChange() {
 }
 
 function zoomIn() {
-    if (zoom>0){
+    if (zoom<1.0){
         zoom+=.05
         let copiedFireData = JSON.parse(JSON.stringify(dataInitLoad[7])); //avoiding pass by reference for map display data filtering
         myMapVis = new MapVis('mapDiv', dataInitLoad[7], copiedFireData);
@@ -122,8 +122,9 @@ function zoomIn() {
 }
 
 function zoomOut() {
-    if (zoom<1.0){
-        zoom-=.05
+    if (zoom > 0) {
+        zoom -= .05
         let copiedFireData = JSON.parse(JSON.stringify(dataInitLoad[7])); //avoiding pass by reference for map display data filtering
         myMapVis = new MapVis('mapDiv', dataInitLoad[7], copiedFireData);
-    }}
+    }
+}

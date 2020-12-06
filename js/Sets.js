@@ -129,17 +129,17 @@ class Sets {
                     .attr('x', 0)
                     .attr('dy', 5)
                     .text('The black notch bisecting the bars indicates the')
-                    .attr('font-size', 12)
+                    .attr('font-size', 14)
                     .append('svg:tspan')
                     .attr('x', 0)
                     .attr('dy', 20)
                     .text('midpoint - groups with orange flows crossing the midpoint')
-                    .attr('font-size', 12)
+                    .attr('font-size', 14)
                     .append('svg:tspan')
                     .attr('x', 0)
                     .attr('dy', 20)
                     .text('represent disproportionately impacted demographics.')
-                    .attr('font-size', 12)
+                    .attr('font-size', 14)
             }
 
             if (vis.sliderStage == 3) {
@@ -151,7 +151,7 @@ class Sets {
                     .attr('x', 0)
                     .attr('dy', 5)
                     .text('Men and women are roughly equally affected by wildfires.')
-                    .attr("font-size", 12)
+                    .attr("font-size", 14)
             }
 
             if (vis.sliderStage == 4) {
@@ -163,12 +163,12 @@ class Sets {
                     .attr('x', 0)
                     .attr('dy', 5)
                     .text('Whites and Asians are relatively less affected.')
-                    .attr("font-size", 12)
+                    .attr("font-size", 14)
                     .append('svg:tspan')
                     .attr('x', 0)
                     .attr('dy', 20)
                     .text("(The orange flows don't quite cross their midpoints.)")
-                    .attr('font-size', 10)
+                    .attr('font-size', 12)
                     .transition(100)
             }
 
@@ -181,12 +181,12 @@ class Sets {
                     .attr('x', 0)
                     .attr('dy', 5)
                     .text('Hispanics are relatively more affected.')
-                    .attr("font-size", 12)
+                    .attr("font-size", 14)
                     .append('svg:tspan')
                     .attr('x', 0)
                     .attr('dy', 20)
                     .text("(More than half of Hispanics live in more affected counties.)")
-                    .attr('font-size', 10)
+                    .attr('font-size', 12)
             }
         }
 

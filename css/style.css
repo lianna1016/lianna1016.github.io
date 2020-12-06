@@ -3,6 +3,9 @@ html,
 body {
     background-color: #eaddda;
 }
+p{
+    font-size: 20px;
+}
 
 .title {
     font-weight: bold;
