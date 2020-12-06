@@ -115,7 +115,7 @@ class HeatMapVis {
 
         //Draw the rectangle and fill with gradient
         vis.svg.append("rect")
-            .attr("width", 150)
+            .attr("width", 100)
             .attr("height", 15)
             .style("fill", "url(#linear-gradient)")
             .attr('transform', `translate (${vis.width+40}, ${vis.height-170}) rotate(-90)`);
@@ -127,7 +127,7 @@ class HeatMapVis {
             .attr("font-size", 13);
 
         vis.yLegend = d3.scaleLinear()
-            .range([0, 150]);
+            .range([0, 100]);
 
         vis.yAxis = d3.axisRight()
             .scale(vis.yLegend)
@@ -301,7 +301,7 @@ class HeatMapVis {
         }
 
         vis.svg.select(".y-axis")
-            .attr("transform", `translate (${vis.width+55}, ${vis.height-140-180})`)
+            .attr("transform", `translate (${vis.width+55}, ${vis.height-140-130})`)
             .transition()
             .duration(1000)
             .call(vis.yAxis);
