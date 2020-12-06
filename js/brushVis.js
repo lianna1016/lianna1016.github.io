@@ -7,6 +7,8 @@ BrushVis = function(_parentElement, _data) {
     this.data = _data;
     this.displayData = [];
     this.parseDate = d3.timeParse("%Y");
+    this.drought_color = '#fee6ce'
+
 
     // call method initVis
     this.initVis();
@@ -39,8 +41,16 @@ BrushVis.prototype.initVis = function() {
     vis.svg.append('g')
         .attr('class', 'title')
         .append('text')
-        .text('Global Annual Mean Temperature \"Anomalies\" Relative to 20th Century Average (Celsius)')
+        .text('It\'s Getting Hotter')
+        .style('font-size', '18px')
         .attr('transform', `translate(${vis.width/2}, 20)`)
+        .attr('text-anchor', 'middle');
+    vis.svg.append('g')
+        .attr('class', 'title')
+        .append('text')
+        .style('font-size', '14px')
+        .text('Global Annual Mean Temperature \"Anomalies\" Relative to 20th Century Average (Celsius)')
+        .attr('transform', `translate(${vis.width/2}, 40)`)
         .attr('text-anchor', 'middle');
 
     // init scales
@@ -57,16 +67,54 @@ BrushVis.prototype.initVis = function() {
     // init pathGroup
     vis.pathGroup = vis.svg.append('g').attr('class','pathGroup');
 
-    // init path one (average)
+    // init paths (drought and non-dought years)
     vis.pathOne = vis.pathGroup
         .append('path')
         .attr("class", "pathOne");
+    vis.pathTwo = vis.pathGroup
+        .append('path')
+        .attr("class", "pathTwo");
+    vis.pathThree = vis.pathGroup
+        .append('path')
+        .attr("class", "pathThree");
+    vis.pathFour = vis.pathGroup
+        .append('path')
+        .attr("class", "pathFour");
+    vis.pathFive = vis.pathGroup
+        .append('path')
+        .attr("class", "pathFive");
+
+    vis.svg.append("g")
+        .attr("class", "legendOrdinal")
+        .attr("transform", "translate(" + ((15)) + "," + (50) + ")")
+        .style('font-size', '11')
+
+    // scale for cause of fire
+    let ordinal = d3.scaleOrdinal()
+        .domain(["Major Drought", "Minor Drought/Normal"])
+        .range([ vis.drought_color, "darkred"]);
+
+    let legendOrdinal = d3.legendColor()
+        //d3 symbol creates a path-string, for example
+        //"M0,-8.059274488676564L9.306048591020996,
+        //8.059274488676564 -9.306048591020996,8.059274488676564Z"
+        .shape("path", d3.symbol().type(d3.symbolCircle).size(150)())
+        .shapePadding(10)
+        .title("Drought Legend")
+        //use cellFilter to hide the "e" cell
+        //.cellFilter(function(d){ return d.label !== "e" })
+        .scale(ordinal);
+
+    vis.svg.select(".legendOrdinal")
+        .call(legendOrdinal);
 
     // // init path two (single state)
     // vis.pathTwo = vis.pathGroup
     //     .append('path')
     //     .attr("class", "pathTwo");
 
+    //drought years 1986-1992, 2007-2009, 2011-2016
+    //areas 1, 2, 3, 4, 5 (2 and 4 are non-drought color fill)
     // init path generator
     vis.area = d3.area()
         .curve(d3.curveMonotoneX)
@@ -74,7 +122,77 @@ BrushVis.prototype.initVis = function() {
         .y1(function(d) {
             return vis.y(d.Mean); })
         .x(function(d) {
-            return vis.x(d.Year); });
+            if (d.Year<=vis.parseDate(1992)){
+                return vis.x(d.Year)
+            }
+            else{
+                return vis.x(vis.parseDate(1992));
+            }
+        });
+    vis.area2 = d3.area()
+        .curve(d3.curveMonotoneX)
+        .y0(vis.y(0))
+        .y1(function(d) {
+            return vis.y(d.Mean); })
+        .x(function(d) {
+            if (d.Year<vis.parseDate(2007) && d.Year>vis.parseDate(1992) ){
+                return vis.x(d.Year)
+            }
+            else if (d.Year<=vis.parseDate(1992)){
+                return vis.x(vis.parseDate(1992));
+            }
+            else{
+                return vis.x(vis.parseDate(2007));
+            }
+        });
+    vis.area3 = d3.area()
+        .curve(d3.curveMonotoneX)
+        .y0(vis.y(0))
+        .y1(function(d) {
+            return vis.y(d.Mean); })
+        .x(function(d) {
+            if (d.Year<=vis.parseDate(2009) && d.Year>=vis.parseDate(2007) ){
+                return vis.x(d.Year)
+            }
+            else if (d.Year<=vis.parseDate(2007)){
+                return vis.x(vis.parseDate(2007));
+            }
+            else{
+                return vis.x(vis.parseDate(2009));
+            }
+        });
+    vis.area4 = d3.area()
+        .curve(d3.curveMonotoneX)
+        .y0(vis.y(0))
+        .y1(function(d) {
+            return vis.y(d.Mean); })
+        .x(function(d) {
+            if (d.Year<vis.parseDate(2011) && d.Year>vis.parseDate(2009) ){
+                return vis.x(d.Year)
+            }
+            else if (d.Year<=vis.parseDate(2009)){
+                return vis.x(vis.parseDate(2009));
+            }
+            else{
+                return vis.x(vis.parseDate(2011));
+            }
+        });
+    vis.area5 = d3.area()
+        .curve(d3.curveMonotoneX)
+        .y0(vis.y(0))
+        .y1(function(d) {
+            return vis.y(d.Mean); })
+        .x(function(d) {
+            if (d.Year<=vis.parseDate(2016) && d.Year>=vis.parseDate(2011) ){
+                return vis.x(d.Year)
+            }
+            else if (d.Year<=vis.parseDate(2011)){
+                return vis.x(vis.parseDate(2011));
+            }
+            else{
+                return vis.x(vis.parseDate(2016));
+            }
+        });
 
     // init brushGroup:
     vis.brushGroup = vis.svg.append("g")
@@ -108,19 +226,6 @@ BrushVis.prototype.wrangleDataStatic = function() {
 
     vis.preProcessedData = [];
 
-    // // iterate over each year
-    // dataByDate.forEach( year => {
-    //     let tmpSumNewCases = 0;
-    //     let tmpSumNewDeaths = 0;
-    //     year.value.forEach( entry => {
-    //         tmpSumNewCases += +entry['new_case'];
-    //         tmpSumNewDeaths += +entry['new_death'];
-    //     });
-    //
-    //     vis.preProcessedData.push (
-    //         {date: vis.parseDate(year.key), newCases: tmpSumNewCases, newDeaths: tmpSumNewDeaths}
-    //     )
-    // });
 
     vis.data.forEach(function(d){
         d.Year = +d.Year;
@@ -198,14 +303,30 @@ BrushVis.prototype.updateVis = function() {
     vis.xAxis.transition().duration(400).call(d3.axisBottom(vis.x));
     vis.yAxis.transition().duration(400).call(d3.axisLeft(vis.y).ticks(5));
 
+    // let dateFormat = d3.time.format("%Y");
 
-    // draw pathOne
-    vis.pathOne.datum(vis.preProcessedData)
-        .transition().duration(400)
+    // draw areas of drought and non-dorught years
+    vis.pathOne.data([vis.preProcessedData])
         .attr("d", vis.area)
-        .attr("fill", "darkred")
-        .attr("stroke", "#136D70")
-        .attr("clip-path", "url(#clip)");
+        .attr('fill', vis.drought_color)
+
+    vis.pathTwo.datum(vis.preProcessedData)
+        .attr("d", vis.area2)
+        .attr('fill', 'darkred')
+
+    vis.pathThree.datum(vis.preProcessedData)
+        .attr("d", vis.area3)
+        .attr('fill', vis.drought_color)
+
+    vis.pathFour.datum(vis.preProcessedData)
+        .attr("d", vis.area4)
+        .attr('fill', 'darkred')
+
+    vis.pathFive.datum(vis.preProcessedData)
+        .attr("d", vis.area5)
+        .attr('fill', vis.drought_color)
+
+        // .attr("stroke", "#136D70")
 
     // // draw pathOne
     // vis.pathTwo.datum(vis.dataPathTwo)
@@ -214,6 +335,7 @@ BrushVis.prototype.updateVis = function() {
     //     .attr('fill', 'rgba(255,0,0,0.47)')
     //     .attr("stroke", "#darkred")
     //     .attr("clip-path", "url(#clip)");
+
 
     vis.brushGroup
         .call(vis.brush);

@@ -198,7 +198,7 @@ class Sets {
 
         // data already pre-cleaned and pre-wrangled!
         vis.displayData = vis.dataDemos;
-        console.log(vis.displayData);
+        // console.log(vis.displayData);
 
         vis.updateVis();
     }
@@ -210,7 +210,7 @@ class Sets {
 
         vis.keys = vis.displayData.columns.slice(1, -1);
 
-        vis.color = d3.scaleOrdinal(["Most Affected Counties"], ["#f3806b"]).unknown("#b0aca6");
+        vis.color = d3.scaleOrdinal(["Most Affected"], ["#fa5f43"]).unknown("#ccc");
 
         let index = -1;
         let nodes = [];

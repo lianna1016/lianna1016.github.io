@@ -108,6 +108,12 @@ carousel.carousel({
 
 // on button click switch view
 function switchView(){
+    // toggle-dash
+    // $('#toggle-dash').text(''); //remove in edge case
+    // $('#replaceme').append('');
+    $('#toggle-dash').text(function(i, text){
+        return text === "Show Table" ? "Show Map" : "Show Table";
+    })
     carousel.carousel('next')
     $('#switchView').html() === 'map view'  ? $('#switchView').html('table view') : $('#switchView').html('map view');
 }

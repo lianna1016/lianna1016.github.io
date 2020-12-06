@@ -9,6 +9,153 @@ body {
     font-size: 16px;
 }
 
+/*dashboard formatting*/
+.legendSize text.label {
+    fill: black;
+}
+.table {
+    font-size: 0.7em;
+}
+.tiptext{
+    text-align: left;
+}
+#mapSelection{
+    font-size: 1.5em;
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('../fonts/glyphicons-halflings-regular.eot');
+    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+/* START dashboard styling*/
+
+/*center button*/
+.reset-dash-center {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    font-size: 14px;
+}
+#brushme{
+    position: absolute;
+    bottom: 25px;
+    left: 40%;
+    color: white;
+    font-size: 14px;
+}
+
+#disclaimer{
+    position: absolute;
+    bottom: 25px;
+    left: 10%;
+    font-size: 12px;
+}
+
+.btn-group-vertical{
+    position: absolute;
+    top: 50%;
+    right:20%;
+    /*color: white;*/
+    /*pointer-events: none;*/
+    z-index:1;
+    font-size: 14px;
+}
+.btn-line{
+    border: #1d2124;
+    border-radius: 10px;
+    outline-color: #1d2124;
+    background: rgb(239, 239, 239);
+}
+/*.btn-group {*/
+/*    flex-wrap: wrap;*/
+/*    width: 80px;*/
+/*}*/
+
+button{
+    width:80px;
+}
+
+#mapCanvas {
+    padding:0;
+}
+
+.dash-enclosing-border{
+    /*border: thin solid grey; */
+    /*border-radius: 5px;*/
+}
+
+
+/*table that replaces map on swith view*/
+#tableDiv{
+    overflow-y: scroll;
+    height: 100%;
+    width:100%;
+    padding: 20px;
+    /*border: thin solid grey;*/
+    border: beige;
+    border-radius: 5px;
+    /*background: rgba(64,64,64,0.4);*/
+    background: beige;
+}
+
+html {
+    overflow-y: scroll;
+}
+/*tile background that it rests on*/
+.dash-tile{
+    /*background-color: #1d2124;*/
+    background-color: #eaddda
+}
+/*actual visual tile itself*/
+.dash-tile-inner{
+    height: 100%;
+    width:100%;
+    /*border: thin solid grey;*/
+    /*border: thin solid grey;*/
+    /*border-radius: 5px;*/
+    /*background: rgba(64,64,64,0.4)*/
+}
+.land{
+    fill: beige;
+}
+
+.map-enclosing-tile{
+    height: 100%;
+    width:100%;
+    /*border: coral;*/
+    /*border-radius: 5px;*/
+    /*background: rgba(64,64,64,0.4);*/
+    background: #eaddda;
+
+}
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    height: 28px;
+    padding: 2px;
+    font: 12px Charter;
+    background: lightsteel;
+    border-radius: 8px;
+}
+.legendSize text.label {
+    fill: black;
+}
+.table {
+    font-size: 0.7em;
+}
+.tiptext{
+    text-align: left;
+}
+#mapSelection{
+    font-size: 1.5em;
+}
+/*END dashboard styling*/
+
+
+
 /* START wind fire map stylying*/
 html,body {
     width:100%;
@@ -76,16 +223,15 @@ body {
 
 
 /*dashboard formatting*/
-.tooltip {
-    position: absolute;
-    text-align: center;
-    width: 200px;
-    height: 28px;
-    padding: 2px;
-    font: 12px Charter;
-    background: lightsteeldarkred;
-    border-radius: 8px;
-}
+/*.tooltip {*/
+/*    position: absolute;*/
+/*    text-align: center;*/
+/*    width: 200px;*/
+/*    height: 28px;*/
+/*    padding: 2px;*/
+/*    font: 12px Charter;*/
+/*    border-radius: 8px;*/
+/*}*/
 .legendSize text.label {
     fill: black;
 }

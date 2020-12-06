@@ -15,7 +15,7 @@ class HeatMapVis {
 
     initVis(){
         let vis = this;
-        console.log(vis.data)
+        // console.log(vis.data)
 
         vis.margin = {top: 40, right: 160, bottom: 30, left: 130};
 
@@ -116,19 +116,18 @@ class HeatMapVis {
 
         //Draw the rectangle and fill with gradient
         vis.svg.append("rect")
-            .attr("width", 200)
-            .attr("height", 20)
+            .attr("width", 150)
+            .attr("height", 15)
             .style("fill", "url(#linear-gradient)")
             .attr('transform', `translate (${vis.width+40}, ${vis.height-170}) rotate(-90)`);
 
         vis.svg.append('g')
             .append("text")
             .attr('transform', `translate (${vis.width+30}, ${vis.height-180}) rotate(-90)`)
-            .text('Number of Fires')
-            .attr('font-size', 12);
+            .text('Number of Fires');
 
         vis.yLegend = d3.scaleLinear()
-            .range([0, 200]);
+            .range([0, 150]);
 
         vis.yAxis = d3.axisRight()
             .scale(vis.yLegend)
@@ -302,7 +301,7 @@ class HeatMapVis {
         }
 
         vis.svg.select(".y-axis")
-            .attr("transform", `translate (${vis.width+60}, ${vis.height-140-230})`)
+            .attr("transform", `translate (${vis.width+55}, ${vis.height-140-180})`)
             .transition()
             .duration(1000)
             .call(vis.yAxis);

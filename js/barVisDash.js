@@ -19,6 +19,13 @@ class BarVisDash {
         // parse date method
         this.parseDate = d3.timeParse("%m/%d/%Y");
         this.parseYear = d3.timeParse("%Y")
+        this.man = [2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 18, 19]
+        this.natural = [1, 17]
+        this.other = [0, 9, 14]
+        this.all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ,16, 17, 18, 19]
+        this.bar_color ='darkred'
+        this.drought_bar_color = '#fee6ce'
+        this.drought_years = [1986,1987,1988,1989,1990,1991,1992, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016]   //drought years 1986-1992, 2007-2009, 2011-2016
         this.initVis()
     }
 
@@ -115,7 +122,9 @@ class BarVisDash {
             vis.fires.objects.fires_great_5k.geometries.forEach( row => {
                 // and push rows with proper dates into filteredData
                 if (selectedTimeRange[0] <= vis.parseYear(row.properties.year) && vis.parseYear(row.properties.year) <= selectedTimeRange[1]){
-                    filteredData.push(row);
+                    if (selectedCategory === 'all' | vis[selectedCategory].includes(row.properties.cause)){
+                        filteredData.push(row);
+                    }
                 }
             });
             filteredData.sort(function(x, y){
@@ -127,7 +136,9 @@ class BarVisDash {
                 // and push rows with proper dates into filteredData
                 //our temperature data starts from 1986 whereas the fires data goes all the way back to 1878
                 if (vis.parseYear(1986) <= vis.parseYear(row.properties.year) && vis.parseYear(row.properties.year) <= vis.parseYear(2016)){
-                    filteredData.push(row);
+                    if (selectedCategory === 'all' | vis[selectedCategory].includes(row.properties.cause)){
+                        filteredData.push(row);
+                    }
                 }
             });
             filteredData.sort(function(x, y){
@@ -265,19 +276,12 @@ class BarVisDash {
         vis.percent_formatter= d3.format(".2n")
 
 
+        let acre_format = d3.format(",.2f")
 
         bars.enter().append("rect")
             .attr('class', 'bar')
-            .merge(bars)
-            // .transition()
-            // .duration(750)
-            .attr('id', d => d.year.replace(/\s+/g, '-') + '-bar')
-            .attr("x", d => vis.x(d.year)+10)
-            .attr("width", vis.x.bandwidth())
-            .attr("height", (d,i) => vis.height - vis.y(d[vis.graphDataSelector]))
-            .attr("y", (d, i) => vis.y(vis.topTenData[i][vis.graphDataSelector]))
             .on('mouseover', function (event, d) {
-                console.log(d.year.replace(/\s+/g, '-') + '-bar')
+                // console.log(d.year.replace(/\s+/g, '-') + '-bar')
                 // myMapVis.svg.select("#"+d.state.replace(/\s+/g, '-'))
                 //     .attr('stroke-width', '2px')
                 //     .attr('stroke', 'black')
@@ -293,16 +297,42 @@ class BarVisDash {
                     .html(`
                             <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
                                  <h5>${JSON.stringify(d.year).replace(/\"/g, "")}</h5>
-                                  <div class="tiptext"> Total Acres Burned: ${d.acresBurned}</div>
+                              <div class="tiptext">Total Acres Burned: ${acre_format(d.acresBurned)}</div>
                              </div>`);
+                myMapVis.svg.selectAll('.map-'+ d.year)
+                    .attr('stroke-width', '2px')
+                    .attr('stroke', 'black')
+                    .style('fill', 'red')
             })
             .on('mouseout', function (event, d) {
 
                 d3.select(this)
                     .attr('stroke-width', '0px')
                     .style('fill', function (d, index) {
-                        return 'darkred'
+                        // this.bar_color ='darkred'
+                        // this.drought_bar_color = '#fee6ce'
+                        // this.drought_years = [1986,1987,1988,1989,1990,1991,1992, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016]   //drought years 1986-1992, 2007-2009, 2011-2016
+                        // return vis.graph_color
+                        if (vis.drought_years.includes(parseInt(d.year))){
+                            return vis.drought_bar_color
+                        }else{
+                            return vis.bar_color
+                        }
                     })
+                myMapVis.svg.selectAll('.map-'+ d.year)
+                    .attr('stroke-width', '0.8px')
+                    .style('fill', function (d, index) {
+                        if (vis.man.includes(d.properties.cause)) {
+                            return "firebrick";
+                        } else if (vis.natural.includes(d.properties.cause)){
+                            return "orange";
+                        } else if (vis.other.includes(d.properties.cause)){
+                            //console.log('bye')
+                            return "yellow";
+                        }
+                    })
+                    .attr('stroke', 'black')
+
                 // myMapVis.svg.select("#"+d.state.replace(/\s+/g, '-'))
                 //     .attr('stroke-width', '0px')
                 //     .style("fill", function (d, index) {
@@ -334,20 +364,20 @@ class BarVisDash {
                     .style("top", 0)
                     .html(``);
             })
+            .merge(bars)
+            .transition()
+            .duration(500)
+            .attr('class', d => 'bar-'+d.year)
+            .attr("x", d => vis.x(d.year)+10)
+            .attr("width", vis.x.bandwidth())
+            .attr("height", (d,i) => vis.height - vis.y(d[vis.graphDataSelector]))
+            .attr("y", (d, i) => vis.y(vis.topTenData[i][vis.graphDataSelector]))
             .style('fill', function (d, index) {
-
-                return 'darkred'
-                // if (vis.stateList.includes(d.state)){
-                //             if (selectedCategory == 'absCases' || selectedCategory == 'absDeaths'){
-                //                 return 'darkred'
-                //             }
-                //             else{
-                //                 return universalColorScale(vis.stateInfoDict[d.state][selectedCategory])
-                //             }
-                // }
-                // else{
-                //     return 'black' //no data available for territories like American Samoa
-                // }
+                if (vis.drought_years.includes(parseInt(d.year))){
+                    return vis.drought_bar_color
+                }else{
+                    return vis.bar_color
+                }
             })
 
         bars.exit().remove();
@@ -359,6 +389,7 @@ class BarVisDash {
             .duration(750)
             .call(vis.xAxis)
             .selectAll("text")
+            .attr("font-size", 9)
             .attr("y", 10)
             .attr("x", 9)
             .attr("dy", ".35em")

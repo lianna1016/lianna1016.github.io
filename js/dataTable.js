@@ -32,6 +32,8 @@ class DataTable {
         this.man = [2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 18, 19]
         this.natural = [1, 17]
         this.other = [9, 14]
+        this.all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ,16, 17, 18, 19]
+
 
 
 
@@ -96,23 +98,33 @@ class DataTable {
 
         // console.log(vis.fires.objects.fires_great_5k.geometries)
 
-        // if there is a region selected
         if (selectedTimeRange.length !== 0){
 
             // iterate over all rows the csv (dataFill)
             vis.fires.objects.fires_great_5k.geometries.forEach( row => {
                 // and push rows with proper dates into filteredData
                 if (selectedTimeRange[0] <= vis.parseYear(row.properties.year) && vis.parseYear(row.properties.year) <= selectedTimeRange[1]){
-                    filteredData.push(row);
+                    if (selectedCategory === 'all' | vis[selectedCategory].includes(row.properties.cause)){
+                        filteredData.push(row);
+                    }
                 }
             });
             filteredData.sort(function(x, y){
                 return d3.ascending(x.properties.year, y.properties.year);
             })
         } else {
-            filteredData = vis.fires.objects.fires_great_5k.geometries;
+            // iterate over all rows the csv (dataFill)
+            vis.fires.objects.fires_great_5k.geometries.forEach( row => {
+                // and push rows with proper dates into filteredData
+                //our temperature data starts from 1986 whereas the fires data goes all the way back to 1878
+                if (vis.parseYear(1986) <= vis.parseYear(row.properties.year) && vis.parseYear(row.properties.year) <= vis.parseYear(2016)){
+                    if (selectedCategory === 'all' | vis[selectedCategory].includes(row.properties.cause)){
+                        filteredData.push(row);
+                    }
+                }
+            });
             filteredData.sort(function(x, y){
-                return d3.descending(x.properties.year, y.properties.year);
+                return d3.ascending(x.properties.year, y.properties.year);
             })
         }
 

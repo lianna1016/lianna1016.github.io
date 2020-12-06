@@ -120,7 +120,7 @@ require([
 
             //draw fire layer
             fireLayerRequest.then(function(response){
-                console.log(response)
+                // console.log(response)
 
                 const classBreakInfos = response.classBreakInfos.map(function(item, index){
                     // use the max value from previous item as minValue, if first item, use 0 instead
@@ -133,8 +133,8 @@ require([
                     };
                 });
 
-                console.log('classbreak infos')
-                console.log(classBreakInfos)
+                // console.log('classbreak infos')
+                // console.log(classBreakInfos)
 
                 var symbol = new SimpleFillSymbol();
                 symbol.setColor(new Color([150, 150, 150, 0.5]));
@@ -159,8 +159,8 @@ require([
                 featureLayer.setRenderer(renderer);
                 map.addLayer(featureLayer);
 
-                console.log('featureLayer')
-                console.log(featureLayer)
+                // console.log('featureLayer')
+                // console.log(featureLayer)
             })
 
             //draw wind layer

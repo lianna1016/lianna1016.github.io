@@ -22,6 +22,8 @@ let myMapVis,
 let selectedTimeRangeHeatMap = [1992, 2015];
 let selectedTimeRange = [];
 let selectedYear= '';
+let zoom=0.45;
+let dataInitLoad;
 
 
 // load data using promises
@@ -45,7 +47,10 @@ let promises = [
 ];
 
 Promise.all(promises)
-    .then( function(data){ initMainPage(data) })
+    .then( function(data){
+        initMainPage(data) ;
+        dataInitLoad=data;
+    })
     .catch( function (err){ console.log(err)} );
 
 
@@ -84,14 +89,41 @@ function initMainPage(dataArray) {
     mySets = new Sets('sankey', dataArray[3]);
 
     //myLineGraphVis = new LineGraph('temps-line', dataArray[8])
+}
 
-
+function clearBrush(){
+    selectedTimeRange = []
+    categoryChange()
+    try
+    {
+        //statements expected to throw exception.
+        myBrushVis.brushGroup.call(myBrushVis.brush.move, null);
+    }
+    catch(e)
+    {
+        console.log('brush reset called for dashboard')
+    }
 }
 
 function categoryChange() {
     selectedCategory = $('#categorySelector').val();
     myMapVis.wrangleData(); // maybe you need to change this slightly depending on the name of your MapVis instance
+    myDataTable.wrangleData(); // maybe you need to change this slightly depending on the name of your MapVis instance
     myBarVisOne.wrangleData()
     myBarVisTwo.wrangleData()
 }
 
+function zoomIn() {
+    if (zoom>0){
+        zoom+=.05
+        let copiedFireData = JSON.parse(JSON.stringify(dataInitLoad[7])); //avoiding pass by reference for map display data filtering
+        myMapVis = new MapVis('mapDiv', dataInitLoad[7], copiedFireData);
+    }
+}
+
+function zoomOut() {
+    if (zoom<1.0){
+        zoom-=.05
+        let copiedFireData = JSON.parse(JSON.stringify(dataInitLoad[7])); //avoiding pass by reference for map display data filtering
+        myMapVis = new MapVis('mapDiv', dataInitLoad[7], copiedFireData);
+    }}

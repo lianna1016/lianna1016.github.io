@@ -186,7 +186,7 @@ class BarVis {
             d.year = +d.year;
             d.count = +d.count;
         });
-        console.log(vis.data)
+        // console.log(vis.data)
 
         let start = selectedTimeRangeHeatMap[0];
         let end = selectedTimeRangeHeatMap[1];
@@ -209,7 +209,7 @@ class BarVis {
         vis.displayData.forEach(function(d){
             vis.total += d.counts
         });
-        console.log(vis.total);
+        // console.log(vis.total);
 
         vis.displayData.sort( (a, b) => {
             return b.counts - a.counts;
@@ -295,17 +295,17 @@ class BarVis {
 
 
         vis.svg.select(".x-axis")
-            .attr("transform", "translate(0," + vis.height + ")")
             .transition()
-            .duration(1000)
+            .duration(500)
+            .attr("transform", "translate(0," + vis.height + ")")
             .call(vis.xAxis)
             .selectAll("text")
-            .attr("font-size", 14)
+            .attr("font-size", 18)
             .attr("transform", "translate (0,6) rotate(-17)");
 
         vis.svg.select(".y-axis")
             .transition()
-            .duration(1000)
+            .duration(500)
             .call(vis.yAxis);
 
 
