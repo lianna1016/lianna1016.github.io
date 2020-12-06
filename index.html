@@ -18,7 +18,7 @@
 		{
 			clearBrush();
 			$('#replaceme').text(''); //remove in case user never hovered
-			$('#replaceme').append('*Click and Drag to Filter Years*');
+			$('#replaceme').append('*Click and drag to filter years.*');
 			droughtBrushInsight();
 			droughtBrushInsight()
 		}
@@ -30,11 +30,11 @@
 
 			//reset histogram acres burned
 			$('#replaceBurnInsight').text(''); //remove in case user never hovered
-			$('#replaceBurnInsight').html('<span>There is an upward trend of burned acres, especially when considering a 3-6 year moving average.<br><br> *hover over any bar for insights*</span>');
+			$('#replaceBurnInsight').html('<span>There is an upward trend of acres burned, especially when considering a 3-6 year moving average.<br><br> *Hover over any bar for insights*</span>');
 
 			//reset histogram fire counts
 			$('#replaceCountInsight').text(''); //remove in case user never hovered
-			$('#replaceCountInsight').html('<span>Major drought years (in dark red) see the largest number of fires and acres burned. <br><br> *hover over any bar for insights*</span>');
+			$('#replaceCountInsight').html('<span>Major drought years (in dark red) see the largest number of fires and acres burned. <br><br> *Hover over any bar for insights*</span>');
 
 			//reset map
 			$('#replaceMapInsight').text(''); //remove in case user never hovered
@@ -195,14 +195,14 @@
 												<div class="row dash-tile justify-content-center" style="height: 45%; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 0vh">
 													<div id="barchart" class="align-self-center dash-tile-inner" onmouseover="removeBurn()">
 														<div class="row">
-															<div id="instructions1"><span id="replaceBurnInsight">There is an upward trend of burned acres, especially when considering a 3-6 year moving average.<br><br> *hover over any bar for insights*</span></div>
+															<div id="instructions1"><span id="replaceBurnInsight">There is an upward trend of acres burned, especially when considering a 3-6 year moving average.<br><br> *Hover over any bar for insights.*</span></div>
 														</div>
 													</div>
 												</div>
 												<div class="row dash-tile justify-content-center" style="height: 45%; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 0vh">
 													<div id="barchart2" class="align-self-center dash-tile-inner" onmouseover="removeCount()">
 														<div class="row">
-															<div id="instructions2"><span id="replaceCountInsight">Major drought years (in dark red) see the largest number of fires and acres burned. <br><br> *hover over any bar for insights*</span></div>
+															<div id="instructions2"><span id="replaceCountInsight">Major drought years (in dark red) see the largest number of fires and acres burned. <br><br> *Hover over any bar for insights.*</span></div>
 														</div>
 													</div>
 												</div>
@@ -216,7 +216,7 @@
 											<div id="brushmeInstructions" onmouseover="changeBodyBackground()"><span id="replaceDroughtInsight">The climate is getting hotter and California is seeing many droughts.</span></div>
 										</div>
 										<div class="row">
-											<div id="brushme" onmouseover="changeBodyBackground()"><span id="replaceme">*Click and Drag to Filter Years*</span></div>
+											<div id="brushme" onmouseover="changeBodyBackground()"><span id="replaceme">*Click and drag to filter years.*</span></div>
 										</div>
 									</div>
 									<div class="row">
@@ -249,11 +249,11 @@
 							In the summer of 2020, the world was shocked by photos of orange and smoke-filled skies emerging from California.
 							The smoke produced by wildfires traveled far and caused widespread respiratory problems across California and the West Coast.
 						</p>
-						<img style="height: 220px; width: 32%;" src="img/redskies_sf.jpg" alt="Red Skies.">
+						<img style="height: 225px;" src="img/redskies_sf.jpg" alt="Red Skies.">
 						<!-- https://www.cnbc.com/2020/09/09/california-wildfires-turn-bay-area-skies-an-eerie-orange.html -->
-						<img style="height: 220px; width: 32%;" src="img/yellowskies.jpg" alt="Yellow Skies.">
+						<img style="height: 225px;" src="img/yellowskies.jpg" alt="Yellow Skies.">
 						<!-- https://www.wired.com/story/depth-of-field-california-wildfires/ -->
-						<img style="height: 220px; width: 32%;" src="img/smokeyskies.jpg" alt="Smokey Skies.">
+						<img style="height: 225px;" src="img/smokeyskies.jpg" alt="Smokey Skies.">
 						<!-- https://www.huffpost.com/entry/homeless-california-fires-smoke-coronavirus_n_5f40625bc5b6305f32578f38 -->
 					</div>
 
