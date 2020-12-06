@@ -300,8 +300,8 @@ class BarVis {
             .attr("transform", "translate(0," + vis.height + ")")
             .call(vis.xAxis)
             .selectAll("text")
-            .attr("font-size", 18)
-            .attr("transform", "translate (0,6) rotate(-17)");
+            .attr("font-size", 15)
+            .attr("transform", "translate (0,10) rotate(-22)");
 
         vis.svg.select(".y-axis")
             .transition()
