@@ -122,7 +122,7 @@ class HeatMapVis {
 
         vis.svg.append('g')
             .append("text")
-            .attr('transform', `translate (${vis.width+30}, ${vis.height-180}) rotate(-90)`)
+            .attr('transform', `translate (${vis.width+30}, ${vis.height-170}) rotate(-90)`)
             .text('Number of Fires')
             .attr("font-size", 13);
 
