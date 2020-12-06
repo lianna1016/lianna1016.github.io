@@ -2,8 +2,8 @@
 library(tidyverse)
 
 
-fires <- read.csv("~/Desktop/Fall 2020/CS171/piazzaposse/week_12/data/California_Fire_Incidents.csv", stringsAsFactors = FALSE)
-demographics <- read.csv("~/Desktop/Fall 2020/CS171/piazzaposse/week_12/data/cc-est2019-alldata-06.csv", stringsAsFactors = FALSE)
+fires <- read.csv("~/Desktop/Fall 2020/CS171/piazzaposse/data/California_Fire_Incidents.csv", stringsAsFactors = FALSE)
+demographics <- read.csv("~/Desktop/Fall 2020/CS171/piazzaposse/data/cc-est2019-alldata-06.csv", stringsAsFactors = FALSE)
 
 sorted_fires <- fires %>% 
   group_by(Counties) %>% 
@@ -82,7 +82,7 @@ rownames(combined_race) <- c()
 
 race_labels <- rep(c("White", "Hispanic", "Asian", "Black", "Other"), 4)
 gender_labels <- rep(c(rep("Female", 5), rep("Male", 5)), 2)
-best_worst_labels <- c(rep("Most Affected", 10), rep("Least Affected", 10))
+best_worst_labels <- c(rep("Most Affected Counties", 10), rep("Least Affected Counties", 10))
 
 output <- cbind(best_worst_labels, gender_labels, race_labels, combined_race)
 
@@ -90,4 +90,4 @@ colnames(output)[4] <- "POP"
 
 View(output)
 
-write.csv(output, '~/Desktop/Fall 2020/CS171/piazzaposse/week_12/data/demographics_agg.csv')
+write.csv(output, '~/Desktop/Fall 2020/CS171/piazzaposse/data/demographics_agg.csv')

@@ -210,7 +210,7 @@ class Sets {
 
         vis.keys = vis.displayData.columns.slice(1, -1);
 
-        vis.color = d3.scaleOrdinal(["Most Affected"], ["#fa5f43"]).unknown("#ccc");
+        vis.color = d3.scaleOrdinal(["Most Affected Counties"], ["#f3806b"]).unknown("#b0aca6");
 
         let index = -1;
         let nodes = [];

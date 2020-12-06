@@ -124,7 +124,8 @@ class HeatMapVis {
         vis.svg.append('g')
             .append("text")
             .attr('transform', `translate (${vis.width+30}, ${vis.height-180}) rotate(-90)`)
-            .text('Number of Fires');
+            .text('Number of Fires')
+            .attr('font-size', 12);
 
         vis.yLegend = d3.scaleLinear()
             .range([0, 200]);

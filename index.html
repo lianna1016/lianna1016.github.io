@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>CS171 - Final Project</title>
+	<title>Asking the Burning Questions</title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
@@ -26,6 +26,7 @@
 						<!--title page-->
 						<section style="height: 100vh; width: 100%;"><a name="top"></a>
 							<img style="height: 96vh; width: 100%; opacity: 0.5;" src="img/wildfire.jpg" alt="Wildfire Picture.">
+							<!-- https://www.shutterstock.com/image-photo/eagle-creek-wildfire-columbia-river-gorge-710588278 -->
 							<div class="centered" style="width: 100%; text-align: center;">
 							<span style="color: black; font-size: 48px;">
 								Asking the Burning Questions: <br>
@@ -36,20 +37,20 @@
 						</section>
 					</div>
 
-					<div class="section" id="section1" >
+					<div class="section" id="section1">
 						<h2>Overview:</h2><br>
 						<p>For each of the past few years, California has been devastated by its worst wildfire season in modern history. Millions of acres have been
 							destroyed, thousands of residents have been forced to relocate, and numerous lives have been lost.
 							These tragedies have also sparked a fierce national conversation on climate change, and intense
 							fears about the inhabitability of a warmer world.</p>
-						<p>Here we can see the active wildfires in the United States and the winds that are exacerbating the problems by fueling
-							the fires and carrying the smoke. </p>
-
-						<div id="mapCanvas" style="height:70vh;">
-						</div>
-						<span id="wind-instruction">Click On Any Fire for more Information</span>
-						<span id="credit">Hourly Updated Wind and Fire Map - Inspired by <a href="https://github.com/cambecc/earth">Earth</a>, wind data from <a href="http://nomads.ncdc.noaa.gov/data.php?name=access#hires_weather_datasets">GFS</a>, wind open source on <a href="https://github.com/Esri/wind-js">Github</a>, fire open source on <a href="https://www.esri.com/arcgis-blog/products/arcgis-online/mapping/active-fires-visualization/">ArcGIS Fires Guide</a></span>
-
+						<br>
+						<br>
+						<img style="height: 220px;" src="img/redskies_socal.jpg" alt="Red Skies.">
+						<!-- https://www.spiegel.de%2Fpanorama%2Fkalifornien-heftige-braende-in-vertreiben-tausende-menschen-a-97934392-b505-4bc3-9615-8132c425b254&psig=AOvVaw24n21wTlppe7H34g4YXQZk&ust=1607225337689000&source=images&cd=vfe&ved=0CA4QjhxqFwoTCIjAgo7zte0CFQAAAAAdAAAAABAD -->
+						<img style="height: 220px;" src="img/redskies_ocean.jpg" alt="Red Skies.">
+						<!-- https://www.cbsnews.com/news/california-fire-northern-burn-homes-businesses/ -->
+						<img style="height: 220px;" src="img/morris-wildfires.jpg" alt="Red Skies.">
+						<!-- https://tec.fsi.stanford.edu/ -->
 					</div>
 
 					<div class="section" id="section2">
@@ -67,13 +68,6 @@
 							<div class="container-fluid" style="height: 80vh; padding-top: 1vh">
 								<div class="row">
 									<div class="col-12 offset-1" style="border: thin solid grey; border-radius: 5px;">
-
-										<!-- HEADING -->
-<!--										<div class="row d-flex justify-content-center" style="height: 10vh; padding: 0; background: #bdbdbd;">-->
-<!--											<div class="align-self-center">-->
-<!--												<h1>California Wildfire and Climate Change Dashboard</h1>-->
-<!--											</div>-->
-<!--										</div>-->
 
 										<!-- CONTENT -->
 										<div class="row" style="height: 70vh; background: white; padding: 0;">
@@ -166,6 +160,32 @@
 						</section>
 					</div>
 
+					<div class="section" id="section-skies">
+						<p>
+							In the summer of 2020, the world was shocked by photos of orange and smoke-filled skies emerging from California.
+							The smoke produced by wildfires traveled far and caused widespread respiratory problems across California and the West Coast.
+						</p>
+						<img style="height: 200px;" src="img/redskies_sf.jpg" alt="Red Skies.">
+						<!-- https://www.cnbc.com/2020/09/09/california-wildfires-turn-bay-area-skies-an-eerie-orange.html -->
+						<img style="height: 200px;" src="img/yellowskies.jpg" alt="Yellow Skies.">
+						<!-- https://www.wired.com/story/depth-of-field-california-wildfires/ -->
+						<img style="height: 200px;" src="img/smokeyskies.jpg" alt="Smokey Skies.">
+						<!-- https://www.huffpost.com/entry/homeless-california-fires-smoke-coronavirus_n_5f40625bc5b6305f32578f38 -->
+					</div>
+
+
+
+					<div class="section" id="section-wind">
+						<p>
+							Wind plays a significant role in spreading smoke, and in exacerbating wildfires themselves. In general, winds above 35mph (colored in purple below)
+							are able to accelerate the spread of fires.
+						</p>
+						<div id="mapCanvas" style="height:80vh;">
+						</div>
+						<span id="wind-instruction">Click On Any Fire for more Information</span>
+						<span id="credit">Hourly Updated Wind and Fire Map - Inspired by <a href="https://github.com/cambecc/earth">Earth</a>, wind data from <a href="http://nomads.ncdc.noaa.gov/data.php?name=access#hires_weather_datasets">GFS</a>, wind open source on <a href="https://github.com/Esri/wind-js">Github</a>, fire open source on <a href="https://www.esri.com/arcgis-blog/products/arcgis-online/mapping/active-fires-visualization/">ArcGIS Fires Guide</a></span>
+					</div>
+
 					<div class="section" id="section6">
 						<h4>Who are the people most impacted by these wildfires?</h4>
 					</div>
@@ -214,33 +234,30 @@
 					<div class="section" id="section9">
 						<!--citations-->
 						<section> <a name="citations"></a>
-							<h2>Project By:</h2>
-							Katherine Deng, Anna Li, Christina Wang
-							<div style="height: 2vh;"></div>
+							<p>
+								This webpage is part of a final project for CS171: Visualization at Harvard University, Fall 2020.
+								We'd like to thank our TF mentor, Elizabeth, and the rest of the CS171 teaching staff for their guidance and
+								support on this project.
+							</p>
+							<br>
+							<h4>Project By:</h4>
+							<p>Katherine Deng, Anna Li, Christina Wang</p>
 
-							<h2>Data Sources: </h2>
+							<br>
+
+							<h4>Data Sources: </h4>
 							<ul>
-								<li>US fires data, 1992-2015</li>
-								<ul style="padding-left:20px">
-									<li>https://www.kaggle.com/captcalculator/wildfire-exploratory-analysis</li>
-								</ul>
-								<li>CA fires descriptions, 2013-2020, information on cause, agency, etc. </li>
-								<ul style="padding-left:20px">
-									<li>https://www.kaggle.com/ananthu017/california-wildfire-incidents-20132020</li>
-								</ul>
-								<li> CA fire polygons</li>
-								<ul style="padding-left:20px">
-									<li>https://github.com/neuroslice/California-Wildfires/blob/master/caFire.json</li>
-								</ul>
-								<li> CA 2010s census demographic data, with information on age/race/sex/income</li>
-								<ul style="padding-left:20px">
-									<li>https://www.census.gov/data/datasets/time-series/demo/popest/2010s-counties-detail.html</li>
-								</ul>
+								<li><a target="_blank" href="https://www.kaggle.com/captcalculator/wildfire-exploratory-analysis">US Fires Data, 1992-2015</a></li>
+								<li><a target="_blank" href="https://www.kaggle.com/ananthu017/california-wildfire-incidents-20132020">California Fires Data, 2013-2020</a></li>
+								<li><a target="_blank" href="https://github.com/neuroslice/California-Wildfires/blob/master/caFire.json">California Fire Polygons</a></li>
+								<li><a target="_blank" href="https://www.census.gov/data/datasets/time-series/demo/popest/2010s-counties-detail.html">California 2010s County-Level Census Data</a></li>
 							</ul>
-							<div style="height: 2vh;"></div>
+							<br>
 
-							<h2> Link to our Process Book: </h2>
-							<a target="_blank" href="https://docs.google.com/document/d/1mHyz-C9D01MB53XVFC7Ug7ethV3TCDp4PPStJP9uRtc/edit?usp=sharing"> Here is our Process Book!</a>
+							<h4>Image Sources: </h4>
+							<p>None of these images are our own. Image links are included as comments in the code.</p>
+
+							<a target="_blank" href="https://docs.google.com/document/d/1mHyz-C9D01MB53XVFC7Ug7ethV3TCDp4PPStJP9uRtc/edit?usp=sharing">Process Book</a>
 
 						</section>
 					</div>
