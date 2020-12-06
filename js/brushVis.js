@@ -7,7 +7,8 @@ BrushVis = function(_parentElement, _data) {
     this.data = _data;
     this.displayData = [];
     this.parseDate = d3.timeParse("%Y");
-    this.drought_color = '#fee6ce'
+    this.drought_color = 'darkred';
+    this.normal_color = '#e7c8aa';
 
 
     // call method initVis
@@ -86,13 +87,13 @@ BrushVis.prototype.initVis = function() {
 
     vis.svg.append("g")
         .attr("class", "legendOrdinal")
-        .attr("transform", "translate(" + ((15)) + "," + (50) + ")")
+        .attr("transform", "translate(" + ((15)) + "," + (20) + ")")
         .style('font-size', '11')
 
     // scale for cause of fire
     let ordinal = d3.scaleOrdinal()
         .domain(["Major Drought", "Minor Drought/Normal"])
-        .range([ vis.drought_color, "darkred"]);
+        .range([ vis.drought_color, vis.normal_color]);
 
     let legendOrdinal = d3.legendColor()
         //d3 symbol creates a path-string, for example
@@ -312,7 +313,7 @@ BrushVis.prototype.updateVis = function() {
 
     vis.pathTwo.datum(vis.preProcessedData)
         .attr("d", vis.area2)
-        .attr('fill', 'darkred')
+        .attr('fill', vis.normal_color)
 
     vis.pathThree.datum(vis.preProcessedData)
         .attr("d", vis.area3)
@@ -320,7 +321,7 @@ BrushVis.prototype.updateVis = function() {
 
     vis.pathFour.datum(vis.preProcessedData)
         .attr("d", vis.area4)
-        .attr('fill', 'darkred')
+        .attr('fill', vis.normal_color)
 
     vis.pathFive.datum(vis.preProcessedData)
         .attr("d", vis.area5)
@@ -333,7 +334,7 @@ BrushVis.prototype.updateVis = function() {
     //     .transition().duration(400)
     //     .attr("d", vis.area)
     //     .attr('fill', 'rgba(255,0,0,0.47)')
-    //     .attr("stroke", "#darkred")
+    //     .attr("stroke", "#C22E0F")
     //     .attr("clip-path", "url(#clip)");
 
 

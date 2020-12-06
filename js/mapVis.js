@@ -15,8 +15,8 @@ class MapVis {
         this.natural = [1, 17]
         this.other = [0, 9, 14]
         this.all = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ,16, 17, 18, 19]
-        this.bar_color ='darkred'
-        this.drought_bar_color = '#fee6ce'
+        this.bar_color ='#e7c8aa'
+        this.drought_bar_color = 'darkred'
         this.drought_years = [1986,1987,1988,1989,1990,1991,1992, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016]   //drought years 1986-1992, 2007-2009, 2011-2016
 
         // parse date method

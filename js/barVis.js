@@ -69,8 +69,8 @@ class BarVis {
 
 
         vis.box = vis.svg.append("rect")
-            .attr("width", 170)
-            .attr("height", 40)
+            .attr("width", 130)
+            .attr("height", 45)
             .style("fill", "darkred")
             .attr('transform', `translate (${3*vis.width/4-5}, ${-15})`)
 
@@ -80,12 +80,11 @@ class BarVis {
             .attr('x', 3*vis.width/4)
             .attr('y', 20)
             .style("font-size", 16)
-            .style('font-weight', 'bold')
+            // .style('font-weight', 'bold')
             .attr("dy", "-1em")
             .style("fill", "white")
-            .text('Click to See Some of')
+            .text('Click to See the')
             .on("click", function(event, d){
-                console.log('hi')
                 d3.selectAll('.takeaways')
                     .attr('opacity', 1)
             })
@@ -95,11 +94,10 @@ class BarVis {
             .attr('x', 3*vis.width/4)
             .attr('y', 20)
             .style("font-size", 16)
-            .style('font-weight', 'bold')
+            // .style('font-weight', 'bold')
             .style("fill", "white")
-            .text('our Main Takeaways')
+            .text('Main Takeaways')
             .on("click", function(event, d){
-                console.log('hi')
                 d3.selectAll('.takeaways')
                     .attr('opacity', 1)
             })
@@ -109,10 +107,10 @@ class BarVis {
             .attr('opacity', '0')
             .append("text")
             .attr('x', 3*vis.width/4)
-            .attr('y', 22)
-            .style("font-size", 15)
+            .attr('y', 24)
+            .style("font-size", 14)
             .attr("dy", "1.5em")
-            .text("1. Debris burning, Arson, and Lightning  ")
+            .text("1. Debris burning, arson, and lightning  ")
 
 
         vis.svg.append('g')
@@ -120,8 +118,8 @@ class BarVis {
             .attr('opacity', '0')
             .append("text")
             .attr('x', 3*vis.width/4)
-            .attr('y', 22)
-            .style("font-size", 15)
+            .attr('y', 24)
+            .style("font-size", 14)
             .attr("dy", "2.5em")
             .text("are consistently the top 3 fire starters.")
 
@@ -130,8 +128,8 @@ class BarVis {
             .attr('opacity', '0')
             .append("text")
             .attr('x', 3*vis.width/4)
-            .attr('y', 22)
-            .style("font-size", 15)
+            .attr('y', 24)
+            .style("font-size", 14)
             .attr("dy", "4em")
             .text("2. There is an overall positive trend in the ")
 
@@ -140,8 +138,8 @@ class BarVis {
             .attr('opacity', '0')
             .append("text")
             .attr('x', 3*vis.width/4)
-            .attr('y', 22)
-            .style("font-size", 15)
+            .attr('y', 24)
+            .style("font-size", 14)
             .attr("dy", "5em")
             .text("total number of fires over time.")
 
@@ -150,28 +148,28 @@ class BarVis {
             .attr('opacity', '0')
             .append("text")
             .attr('x', 3*vis.width/4)
-            .attr('y', 22)
-            .style("font-size", 15)
+            .attr('y', 24)
+            .style("font-size", 14)
             .attr("dy", "6.5em")
-            .text("3. Many of these fires are man-made, and ")
+            .text("3. Many of these fires are man-made, so ")
 
         vis.svg.append('g')
             .attr('class', 'takeaways')
             .attr('opacity', '0')
             .append("text")
             .attr('x', 3*vis.width/4)
-            .attr('y', 22)
-            .style("font-size", 15)
+            .attr('y', 24)
+            .style("font-size", 14)
             .attr("dy", "7.5em")
-            .text("steps can be taken in order to prevent ")
+            .text("we can take steps in order to prevent ")
 
         vis.svg.append('g')
             .attr('class', 'takeaways')
             .attr('opacity', '0')
             .append("text")
             .attr('x', 3*vis.width/4)
-            .attr('y', 22)
-            .style("font-size", 15)
+            .attr('y', 24)
+            .style("font-size", 14)
             .attr("dy", "8.5em")
             .text("them in the future. ")
 
@@ -259,7 +257,7 @@ class BarVis {
             .transition()
             .duration(1000)
             .attr("y", d => vis.y(d.counts))
-            .attr("x", d => vis.x(d.cause) + 6)
+            .attr("x", d => vis.x(d.cause) + 12)
             .text(d => d.counts)
 
         label.exit().remove;
@@ -300,8 +298,8 @@ class BarVis {
             .attr("transform", "translate(0," + vis.height + ")")
             .call(vis.xAxis)
             .selectAll("text")
-            .attr("font-size", 15)
-            .attr("transform", "translate (0,10) rotate(-22)");
+            .attr("font-size", 12)
+            .attr("transform", "translate (0,6) rotate(-17)");
 
         vis.svg.select(".y-axis")
             .transition()

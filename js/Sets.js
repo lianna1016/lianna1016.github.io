@@ -89,6 +89,7 @@ class Sets {
             .attr('x', 0)
             .attr('dy', 5)
             .text('Drag the slider below to start.')
+            .attr('font-size', 20);
 
         vis.wrangleData();
     }
@@ -104,7 +105,7 @@ class Sets {
             if (vis.sliderStage == 1) {
                 vis.svgText.append("text")
                     .attr('x', 0)
-                    .attr('y', 60)
+                    .attr('y', 100)
                     .attr('class', 'id')
                     .append('svg:tspan')
                     .attr('x', 0)
@@ -117,47 +118,52 @@ class Sets {
                     .append('svg:tspan')
                     .attr('x', 0)
                     .attr('dy', 20)
-                    .text('are distributed.')
+                    .text('(in terms of acres burned) are distributed.')
             }
 
             if (vis.sliderStage == 2) {
                 vis.svgText.append("text")
                     .attr('x', 0)
-                    .attr('y', 150)
+                    .attr('y', 200)
                     .attr('class', 'id')
                     .append('svg:tspan')
                     .attr('x', 0)
                     .attr('dy', 5)
-                    .text('The black notch bisecting the bars indicates the')
+                    .text('The black notch bisecting the bars represents the midpoint - ')
                     .attr('font-size', 14)
                     .append('svg:tspan')
                     .attr('x', 0)
                     .attr('dy', 20)
-                    .text('midpoint - groups with orange flows crossing the midpoint')
+                    .text('sex/race groups with orange flows crossing the midpoint')
                     .attr('font-size', 14)
                     .append('svg:tspan')
                     .attr('x', 0)
                     .attr('dy', 20)
-                    .text('represent disproportionately impacted demographics.')
+                    .text('are disproportionately impacted demographics.')
                     .attr('font-size', 14)
             }
 
             if (vis.sliderStage == 3) {
                 vis.svgText.append("text")
                     .attr('x', 0)
-                    .attr('y', 250)
+                    .attr('y', 300)
                     .attr('class', 'id')
                     .append('svg:tspan')
                     .attr('x', 0)
                     .attr('dy', 5)
                     .text('Men and women are roughly equally affected by wildfires.')
                     .attr("font-size", 14)
+                    .append('svg:tspan')
+                    .attr('x', 0)
+                    .attr('dy', 20)
+                    .text('(The orange and gray flows meet at the midpoint.)')
+                    .attr('font-size', 12)
             }
 
             if (vis.sliderStage == 4) {
                 vis.svgText.append("text")
                     .attr('x', 0)
-                    .attr('y', 300)
+                    .attr('y', 350)
                     .attr('class', 'id')
                     .append('svg:tspan')
                     .attr('x', 0)
@@ -167,7 +173,7 @@ class Sets {
                     .append('svg:tspan')
                     .attr('x', 0)
                     .attr('dy', 20)
-                    .text("(The orange flows don't quite cross their midpoints.)")
+                    .text("(Most of them live in less affected counties.)")
                     .attr('font-size', 12)
                     .transition(100)
             }
@@ -175,7 +181,7 @@ class Sets {
             if (vis.sliderStage == 5) {
                 vis.svgText.append("text")
                     .attr('x', 0)
-                    .attr('y', 350)
+                    .attr('y', 400)
                     .attr('class', 'id')
                     .append('svg:tspan')
                     .attr('x', 0)
@@ -210,7 +216,7 @@ class Sets {
 
         vis.keys = vis.displayData.columns.slice(1, -1);
 
-        vis.color = d3.scaleOrdinal(["Most Affected"], ["#fa5f43"]).unknown("#ccc");
+        vis.color = d3.scaleOrdinal(["Most Affected Counties"], ["#fca79c"]).unknown("#d4bfbf");
 
         let index = -1;
         let nodes = [];
@@ -284,7 +290,7 @@ class Sets {
             .attr("x", d => d.x0 < vis.width / 2 ? d.x1 - 5: d.x0 - 5)
             .attr("y", d => (d.y1 + d.y0) / 2)
             .attr("width", 8)
-            .attr("height", 2)
+            .attr("height", 4)
             .attr("dy", "0.35em")
             .attr("fill", "black");
 
@@ -312,6 +318,7 @@ class Sets {
             .attr("text-anchor", d => d.x0 < vis.width / 2 ? "start" : "end")
             .text(d => d.name)
             .style("font-family", "Charter")
+            .style("fill", "black")
             .append("tspan")
             .attr("fill-opacity", 0.9)
             .text(d => `     (${d.value.toLocaleString()})`)

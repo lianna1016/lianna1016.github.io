@@ -4,7 +4,7 @@ body {
     background-color: #eaddda;
 }
 p{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .title {
@@ -41,12 +41,60 @@ p{
     left: 50%;
     font-size: 14px;
 }
+
+#brushmeInstructions{
+    position: absolute;
+    bottom: 45px;
+    left: 30%;
+    color: white;
+    font-size: 14px;
+    text-shadow: 0px 0px 5px #1b1e21;
+    /*background-color: #1b1e21;*/
+}
+
 #brushme{
     position: absolute;
     bottom: 25px;
     left: 40%;
     color: white;
     font-size: 14px;
+    text-shadow: 0px 0px 5px #1b1e21;
+    /*background-color: #1b1e21;*/
+}
+
+#mapinstructions{
+    position: absolute;
+    bottom: 5%;
+    /*right: 10%;*/
+    color: white;
+    font-size: 14px;
+    text-shadow: 0px 0px 5px #1b1e21;
+    /*background-color: #1b1e21;*/
+    text-align: center;
+}
+
+#instructions1{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    color: white;
+    font-size: 14px;
+    text-shadow: 0px 0px 10px #1b1e21;
+    /*background-color: #1b1e21;*/
+    text-align: center;
+}
+
+#instructions2{
+    position: absolute;
+    bottom: 20%;
+    left: 15%;
+    color: white;
+    font-size: 14px;
+    text-shadow: 0px 0px 5px #1b1e21;
+    text-align: center;
+
+    /*background-color: #1b1e21;*/
+
 }
 
 #disclaimer{

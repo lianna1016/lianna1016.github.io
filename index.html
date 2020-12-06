@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>CS171 - Final Project</title>
+	<title>California Wildfires</title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
@@ -13,117 +13,152 @@
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700' rel='stylesheet' type='text/css'>
 	<script>
-		//dahsboard brush reset button clicked
+		// dashboard brush reset button clicked
 		function ButtonClick_Test()
 		{
 			clearBrush();
 			$('#replaceme').text(''); //remove in case user never hovered
 			$('#replaceme').append('*Click and Drag to Filter Years*');
+			droughtBrushInsight();
+			droughtBrushInsight()
+		}
+		//dahsboard brush reset button clicked
+		function droughtBrushInsight()
+		{
+			$('#replaceDroughtInsight').text(''); //remove in case user never hovered
+			$('#replaceDroughtInsight').append('The climate is getting hotter and California is seeing many droughts.');
+
+			//reset histogram acres burned
+			$('#replaceBurnInsight').text(''); //remove in case user never hovered
+			$('#replaceBurnInsight').html('<span>There is an upward trend of burned acres, especially when considering a 3-6 year moving average.<br><br> *hover over any bar for insights*</span>');
+
+			//reset histogram fire counts
+			$('#replaceCountInsight').text(''); //remove in case user never hovered
+			$('#replaceCountInsight').html('<span>Major drought years (in dark red) see the largest number of fires and acres burned. <br><br> *hover over any bar for insights*</span>');
+
+			//reset map
+			$('#replaceMapInsight').text(''); //remove in case user never hovered
+			$('#replaceMapInsight').text('');
 		}
 	</script>
 	<script>
 		//user began brushing on dashbaord, remove instructions
 		function changeBodyBackground() {
 			$('#replaceme').text(''); //remove
+			$('#replaceDroughtInsight').text(''); //remove
+		}
+		//user began brushing on dashbaord, remove instructions
+		function removeBurn() {
+			$('#replaceBurnInsight').text(''); //remove
+		}
+		function removeCount() {
+			$('#replaceCountInsight').text(''); //remove
+		}
+		function removeMap() {
+			$('#replaceMapInsight').text(''); //remove
 		}
 	</script>
 
 </head>
 <body>
 
-<div class="container">
+	<div class="container">
 
-	<div id="main">
-		<article>
+		<div id="main">
+			<article>
 
-			<div id="fullpage">
-				<div class="section" id="section0">
-					<!--title page-->
-					<section style="height: 100vh; width: 100%;"><a name="top"></a>
-						<img style="height: 96vh; width: 100%; opacity: 0.5;" src="img/wildfire.jpg" alt="Wildfire Picture.">
-						<div class="centered" style="width: 100%; text-align: center;">
+				<div id="fullpage">
+					<div class="section" id="section0">
+						<!--title page-->
+						<section style="height: 100vh; width: 100%;"><a name="top"></a>
+							<img style="height: 96vh; width: 100%; opacity: 0.5;" src="img/wildfire.jpg" alt="Wildfire Picture.">
+							<div class="centered" style="width: 100%; text-align: center;">
 							<span style="color: black; font-size: 48px;">
 								Asking the Burning Questions: <br>
 								<div style="height: 4vh"></div>
 								Visualizing The West Coast’s <br> Devastating New Normal
 							</span><br><br>
-						</div>
-					</section>
-				</div>
+							</div>
+						</section>
+					</div>
 
-				<div class="section" id="section1">
-					<h2>Overview:</h2><br>
-					<p>For each of the past few years, California has been devastated by its worst wildfire season in modern history. Millions of acres have been
-						destroyed, thousands of residents have been forced to relocate, and numerous lives have been lost.
-						These tragedies have also sparked a fierce national conversation on climate change, and intense
-						fears about the inhabitability of a warmer world.</p>
-					<br>
-					<br>
-					<img style="height: 220px;" src="img/redskies_socal.jpg" alt="Red Skies.">
-					<!-- https://www.spiegel.de%2Fpanorama%2Fkalifornien-heftige-braende-in-vertreiben-tausende-menschen-a-97934392-b505-4bc3-9615-8132c425b254&psig=AOvVaw24n21wTlppe7H34g4YXQZk&ust=1607225337689000&source=images&cd=vfe&ved=0CA4QjhxqFwoTCIjAgo7zte0CFQAAAAAdAAAAABAD -->
-					<img style="height: 220px;" src="img/redskies_ocean.jpg" alt="Red Skies.">
-					<!-- https://www.cbsnews.com/news/california-fire-northern-burn-homes-businesses/ -->
-					<img style="height: 220px;" src="img/morris-wildfires.jpg" alt="Red Skies.">
-					<!-- https://tec.fsi.stanford.edu/ -->
-				</div>
+					<div class="section" id="section1">
+						<h2>What's happening?</h2>
+						<p>For each of the past few years, California has been devastated by its worst wildfire season in modern history. Millions of acres have been
+							destroyed, thousands of residents have been forced to relocate, and numerous lives have been lost.
+							These tragedies have also sparked a fierce national conversation on climate change, and intense
+							fears about the inhabitability of a warmer world.</p>
+						<br>
+						<br>
+						<img style="height: 220px;" src="img/redskies_socal.jpg" alt="Red Skies.">
+						<!-- https://www.spiegel.de%2Fpanorama%2Fkalifornien-heftige-braende-in-vertreiben-tausende-menschen-a-97934392-b505-4bc3-9615-8132c425b254&psig=AOvVaw24n21wTlppe7H34g4YXQZk&ust=1607225337689000&source=images&cd=vfe&ved=0CA4QjhxqFwoTCIjAgo7zte0CFQAAAAAdAAAAABAD -->
+						<img style="height: 220px;" src="img/redskies_ocean.jpg" alt="Red Skies.">
+						<!-- https://www.cbsnews.com/news/california-fire-northern-burn-homes-businesses/ -->
+						<img style="height: 220px;" src="img/morris-wildfires.jpg" alt="Red Skies.">
+						<!-- https://tec.fsi.stanford.edu/ -->
+					</div>
 
-				<div class="section" id="section2">
-					<!--						<h2>What are the patterns in California's wildfires over time? How much is destroyed?</h2>-->
-					<!--						<br>-->
-					<!--						<h2>And why is this happening?</h2>-->
-					<h2>What are the patterns in California's wildfires over time? How much is destroyed? And why is this happening?</h2>
-					<br>
-					<h3>Is it nature?</h3>
-					<br>
-					<h3>Is it climate change?</h3>
-					<br>
-					<h3>Is it us?</h3>
-				</div>
+					<div class="section" id="section2">
+<!--						<h2>What are the patterns in California's wildfires over time? How much is destroyed?</h2>-->
+<!--						<br>-->
+<!--						<h2>And why is this happening?</h2>-->
+						<h2>What are the patterns in California's wildfires over time? How much is destroyed? And why is this happening?</h2>
+						<br>
+						<h3>Is it nature?</h3>
+						<br>
+						<h3>Is it climate change?</h3>
+						<br>
+						<h3>Is it us?</h3>
+					</div>
 
-				<div class="section fp-auto-height" id="section3">
-					<section style="height: 100vh;  position:relative; left:80px; left: -100px"><a name="dashboard"></a>
-						<!-- WRAPPER -->
-						<div class="container-fluid" style="height: 80vh; padding-top: 1vh">
-							<div class="row">
-								<div class="col-12 offset-1 dash-enclosing-border">
+					<div class="section fp-auto-height" id="section3">
+						<section style="height: 100vh;  position:relative; left:80px; left: -100px"><a name="dashboard"></a>
+							<!-- WRAPPER -->
+							<div class="container-fluid" style="height: 80vh; padding-top: 1vh">
+								<div class="row">
+									<div class="col-12 offset-1 dash-enclosing-border">
 
-									<!-- HEADING -->
-									<!--										<div class="row d-flex justify-content-center" style="height: 10vh; padding: 0; background: #bdbdbd;">-->
-									<!--											<div class="align-self-center">-->
-									<!--												<h1>California Wildfire and Climate Change Dashboard</h1>-->
-									<!--											</div>-->
-									<!--										</div>-->
+										<!-- HEADING -->
+<!--										<div class="row d-flex justify-content-center" style="height: 10vh; padding: 0; background: #bdbdbd;">-->
+<!--											<div class="align-self-center">-->
+<!--												<h1>California Wildfire and Climate Change Dashboard</h1>-->
+<!--											</div>-->
+<!--										</div>-->
 
-									<!-- CONTENT -->
-									<div class="row" style="height: 70vh; background: white; padding: 0;">
+										<!-- CONTENT -->
+										<div class="row" style="height: 70vh; background: white; padding: 0;">
 
-										<!-- LEFT -->
-										<div class="col-7">
-											<div class="row" style="background: lightgrey;">
-												<div id="stateCarousel" class="carousel slide" data-ride="carousel" style=" width: 100%">
-													<div class="carousel-inner">
+											<!-- LEFT -->
+											<div class="col-7">
+												<div class="row" style="background: lightgrey;">
+													<div id="stateCarousel" class="carousel slide" data-ride="carousel" style=" width: 100%">
+														<div class="carousel-inner">
 
-														<!-- TABLE -->
-														<div class="carousel-item">
-															<div class="col">
-																<div class="row dash-tile" style="height: 70vh; padding: 1vh">
-																	<div id="tableDiv">
+															<!-- TABLE -->
+															<div class="carousel-item">
+																<div class="col">
+																	<div class="row dash-tile" style="height: 70vh; padding: 1vh">
+																		<div id="tableDiv">
+																		</div>
 																	</div>
 																</div>
 															</div>
-														</div>
 
-														<!-- MAP -->
-														<div class="carousel-item active">
-															<div class="col">
-																<div class="row dash-tile" style="height: 70vh; padding: 1vh;">
-																	<div id="mapDiv" class='map-enclosing-tile col'>
-																		<div class="row btn-group-vertical">
-																			<button type="button" class="btn btn-line" id="zoom-in" onclick="zoomIn()"><i class="icon-zoom-in"></i></button>
-																			<button type="button" class="btn btn-line" id="zoom-out" onclick="zoomOut()"><i class="icon-zoom-out"></i></button>
-																		</div>
-																		<div class="row" id="disclaimer">
-																			*No data for some years
+															<!-- MAP -->
+															<div class="carousel-item active">
+																<div class="col">
+																	<div class="row dash-tile" style="height: 70vh; padding: 1vh;">
+																		<div id="mapDiv" class='map-enclosing-tile col'>
+																				<div class="row">
+																					<div id="mapinstructions" onmouseover="removeMap()"><div id="replaceMapInsight"></div></div>
+																				</div>
+																			<div class="row btn-group-vertical">
+																				<button type="button" class="btn btn-line" id="zoom-in" onclick="zoomIn()"><i class="icon-zoom-in"></i></button>
+																				<button type="button" class="btn btn-line" id="zoom-out" onclick="zoomOut()"><i class="icon-zoom-out"></i></button>
+																			</div>
+																			<div class="row" id="disclaimer">
+																				*No data for some years
+																			</div>
 																		</div>
 																	</div>
 																</div>
@@ -132,275 +167,275 @@
 													</div>
 												</div>
 											</div>
-										</div>
 
-										<!-- RIGHT -->
-										<div class="col-5">
-											<div class="row dash-tile" style="height: 10%; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 1vh">
-												<div class="col dash-tile-inner">
-													<div class="row" style="height: 100%">
-														<div class="col-4">
-															<div class="row justify-content-center" style="height: 100%">
-																<button class="btn btn-dark align-self-center" type="button" id='toggle-dash' onclick="switchView()">Show Table</button>
+											<!-- RIGHT -->
+											<div class="col-5">
+												<div class="row dash-tile" style="height: 10%; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 1vh">
+													<div class="col dash-tile-inner">
+														<div class="row" style="height: 100%">
+															<div class="col-4">
+																<div class="row justify-content-center" style="height: 100%">
+																	<button class="btn btn-dark align-self-center" type="button" id='toggle-dash' onclick="switchView()">Show Table</button>
+																</div>
 															</div>
-														</div>
-														<div class="col-8">
-															<div class="row justify-content-center" style="height: 100%">
-																<!--											<p class="align-self-center" >TODO</p>-->
-																<select id='categorySelector' class="custom-select align-self-center" style="width: 80%" onchange="categoryChange()">
-																	<option value="all" selected>All Fire Causes</option>
-																	<option value="man">Fires Caused by Man</option>
-																	<option value="natural">Fires from Natural Causes</option>
-																	<option value="other">Fires Caused by Other / Unknown</option>
-																</select>
+															<div class="col-8">
+																<div class="row justify-content-center" style="height: 100%">
+																	<!--											<p class="align-self-center" >TODO</p>-->
+																	<select id='categorySelector' class="custom-select align-self-center" style="width: 80%" onchange="categoryChange()">
+																		<option value="all" selected>All Fire Causes</option>
+																		<option value="man">Fires Caused by Man</option>
+																		<option value="natural">Fires from Natural Causes</option>
+																		<option value="other">Fires Caused by Other / Unknown</option>
+																	</select>
+																</div>
 															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-											<div class="row dash-tile justify-content-center" style="height: 45%; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 0vh">
-												<div id="barchart" class="align-self-center dash-tile-inner">
+												<div class="row dash-tile justify-content-center" style="height: 45%; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 0vh">
+													<div id="barchart" class="align-self-center dash-tile-inner" onmouseover="removeBurn()">
+														<div class="row">
+															<div id="instructions1"><span id="replaceBurnInsight">There is an upward trend of burned acres, especially when considering a 3-6 year moving average.<br><br> *hover over any bar for insights*</span></div>
+														</div>
+													</div>
 												</div>
-											</div>
-											<div class="row dash-tile justify-content-center" style="height: 45%; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 0vh">
-												<div id="barchart2" class="align-self-center dash-tile-inner">
+												<div class="row dash-tile justify-content-center" style="height: 45%; padding-left: 0vh; padding-bottom: 1vh; padding-right: 1vh; padding-top: 0vh">
+													<div id="barchart2" class="align-self-center dash-tile-inner" onmouseover="removeCount()">
+														<div class="row">
+															<div id="instructions2"><span id="replaceCountInsight">Major drought years (in dark red) see the largest number of fires and acres burned. <br><br> *hover over any bar for insights*</span></div>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row dash-tile" style="height: 22vh; padding: 0; border: 0">
-										<div id="brushDiv" onmouseover="changeBodyBackground()" style="height: 100%; width:100%;">
+										<div class="row dash-tile" style="height: 22vh; padding: 0; border: 0">
+											<div id="brushDiv" style="height: 100%; width:100%;">
+											</div>
+										</div>
+										<div class="row">
+											<div id="brushmeInstructions" onmouseover="changeBodyBackground()"><span id="replaceDroughtInsight">The climate is getting hotter and California is seeing many droughts.</span></div>
+										</div>
+										<div class="row">
+											<div id="brushme" onmouseover="changeBodyBackground()"><span id="replaceme">*Click and Drag to Filter Years*</span></div>
 										</div>
 									</div>
 									<div class="row">
-										<div id="brushme"><span id="replaceme">*Click and Drag to Filter Years*</span></div>
+										<form>
+											<input type="button" id='dashboard-brush-reset' class='reset-dash-center' value="Reset Year Selection And Insights" onclick="ButtonClick_Test()">
+										</form>
 									</div>
 								</div>
-								<div class="row">
-									<form>
-										<input type="button" id='dashboard-brush-reset' class='reset-dash-center' value="Reset Year Selection" onclick="ButtonClick_Test()">
-									</form>
-								</div>
+
 							</div>
+						</section>
+					</div>
 
-						</div>
-					</section>
-				</div>
+					<div class="section" id="section4">
+						<h2>How do we cause wildfires?</h2>
+					</div>
 
-				<div class="section" id="section4">
-					<h2>How do we cause wildfires?</h2>
-				</div>
-
-				<div class="section" id="section5">
-					<!--heatmap-->
-					<section style="height: 100vh;"><a name="heatmap"></a>
-						<div style="height: 4vh"></div>
-						<div id="cause-bar" style="height: 42vh"></div>
-						<div style="height: 3vh"></div>
-						<div id="heat-map" style="height: 42vh"></div>
-					</section>
-				</div>
+					<div class="section" id="section5">
+						<!--heatmap-->
+						<section style="height: 100vh;"><a name="heatmap"></a>
+							<div style="height: 3vh;"> </div>
+							<div id="cause-bar" style="height: 43vh; width: 100%"></div>
+							<div style="height: 3vh;"> </div>
+							<div id="heat-map" style="height: 43vh; width: 100%"></div>
+						</section>
+					</div>
 
 					<div class="section" id="section-skies">
 						<p>
 							In the summer of 2020, the world was shocked by photos of orange and smoke-filled skies emerging from California.
 							The smoke produced by wildfires traveled far and caused widespread respiratory problems across California and the West Coast.
 						</p>
-						<img style="height: 220px;" src="img/redskies_sf.jpg" alt="Red Skies.">
+						<img style="height: 200px;" src="img/redskies_sf.jpg" alt="Red Skies.">
 						<!-- https://www.cnbc.com/2020/09/09/california-wildfires-turn-bay-area-skies-an-eerie-orange.html -->
-						<img style="height: 220px;" src="img/yellowskies.jpg" alt="Yellow Skies.">
+						<img style="height: 200px;" src="img/yellowskies.jpg" alt="Yellow Skies.">
 						<!-- https://www.wired.com/story/depth-of-field-california-wildfires/ -->
-						<img style="height: 220px;" src="img/smokeyskies.jpg" alt="Smokey Skies.">
+						<img style="height: 200px;" src="img/smokeyskies.jpg" alt="Smokey Skies.">
 						<!-- https://www.huffpost.com/entry/homeless-california-fires-smoke-coronavirus_n_5f40625bc5b6305f32578f38 -->
 					</div>
 
-				<div class="section" id="section-wind">
-					<p>
-						Wind plays a significant role in spreading smoke, and in exacerbating wildfires themselves. In general, winds above 35mph (colored in purple below)
-						are able to accelerate the spread of fires.
-					</p>
-					<div id="mapCanvas" style="height:80vh;">
-					</div>
-					<span id="wind-instruction">Click On Any Fire for more Information</span>
-					<span id="credit">Hourly Updated Wind and Fire Map - Inspired by <a href="https://github.com/cambecc/earth">Earth</a>, wind data from <a href="http://nomads.ncdc.noaa.gov/data.php?name=access#hires_weather_datasets">GFS</a>, wind open source on <a href="https://github.com/Esri/wind-js">Github</a>, fire open source on <a href="https://www.esri.com/arcgis-blog/products/arcgis-online/mapping/active-fires-visualization/">ArcGIS Fires Guide</a></span>
-				</div>
 
-				<div class="section" id="section6">
-					<h2>Who are the people most impacted by these wildfires?</h2>
-				</div>
 
-				<div class="section" id="section7">
-					<!--parallel sets-->
-					<section style="height: 100vh;"> <a name="demographics"></a>
-						<div class="row">
-							<div class="col-4" id="walkthrough"></div>
-							<div class="col-8" id="sankey" style="height: 80vh; width: 100%;"></div>
-						</div>
-					</section>
-				</div>
-
-				<div class="section" id="section8">
-					<!--parallel sets-->
-					<section style="height: 100vh;"> <a name="calltoaction"></a>
-						<br>
-						<br>
-						<br>
-						<p>We've seen that more frequent and more destructive fires are becoming the norm in California, that humans are a primary cause of wildfires, and that Hispanics are being disproportionately affected.</p>
-						<br>
-						<br>
-						<h4>What can we do to help those affected?</h4>
-						<ol>
-							<li>Donate money.</li>
-							<ul>
-								<li><a target="_blank" href="https://www.redcross.org/about-us/news-and-events/news/2018/california-wildfires-red-cross-helps-as-thousands-evacuate.html">American Red Cross</a></li>
-								<li><a target="_blank" href="https://www.calfund.org/wildfire-relief-fund/">California Community Foundation’s Wildlife Relief Fund</a></li>
-								<li><a target="_blank" href="https://www.cafirefoundation.org/programs/supplying-aid-to-victims-of-emergency/">California Fire Foundation</a></li>
-								<li><a target="_blank" href="https://www.unitedwayla.org/en/give/disaster-relief-fund/">United Way of Greater Los Angeles</a></li>
-							</ul>
-							<li>Adopt or foster a pet.</li>
-							<ul>
-								<li>Just as humans have been displaced by these fires, so have their pets. <a target="_blank" href="https://www.facebook.com/LAAnimalServices/">LA Animal Services</a> and other California-based shelters often post calls for fosters and adopters on their Facebook pages.</li>
-							</ul>
-							<li>Volunteer your time and skills.</li>
-							<ul>
-								<li><a target="_blank" href="http://www.caring-choices.org/">Caring Choices</a> is a Northern California-based
-									nonprofit which accepts applications from volunteers with medical backgrounds or other manual and technical skills - such as data entry, radio communications, or animal care - that are needed in the wake of these disasters.</li>
-							</ul>
-						</ol>
-					</section>
-				</div>
-
-				<div class="section" id="section9">
-					<!--citations-->
-					<section> <a name="citations"></a>
+					<div class="section" id="section-wind">
 						<p>
-							This webpage is part of a final project for CS171: Visualization at Harvard University, Fall 2020.
-							We'd like to thank our TF mentor, Elizabeth, and the rest of the CS171 teaching staff for their guidance and
-							support on this project.
+							Wind plays a significant role in spreading smoke, and in exacerbating wildfires themselves. The map below shows current active fires and wind patterns. In general, winds above 35mph (indicated in purple)
+							are able to accelerate the spread of fires. <strong>Are you at risk?</strong>
 						</p>
-						<br>
-						<h4>Project By:</h4>
-						<p>Katherine Deng, Anna Li, Christina Wang</p>
+						<div id="mapCanvas" style="height:80vh;">
+						</div>
+						<span id="wind-instruction">Click on any fire for more information.</span>
+						<span id="credit">Hourly Updated Wind and Fire Map - Inspired by <a href="https://github.com/cambecc/earth">Earth</a>, wind data from <a href="http://nomads.ncdc.noaa.gov/data.php?name=access#hires_weather_datasets">GFS</a>, wind open source on <a href="https://github.com/Esri/wind-js">Github</a>, fire open source on <a href="https://www.esri.com/arcgis-blog/products/arcgis-online/mapping/active-fires-visualization/">ArcGIS Fires Guide</a></span>
+					</div>
 
-						<br>
+					<div class="section" id="section6">
+						<h4>Who is most impacted by Californian wildfires?</h4>
+					</div>
 
-						<h4>Data Sources: </h4>
-						<ul>
-							<li><a target="_blank" href="https://www.kaggle.com/captcalculator/wildfire-exploratory-analysis">US Fires Data, 1992-2015</a></li>
-							<li><a target="_blank" href="https://www.kaggle.com/ananthu017/california-wildfire-incidents-20132020">California Fires Data, 2013-2020</a></li>
-							<li><a target="_blank" href="https://github.com/neuroslice/California-Wildfires/blob/master/caFire.json">California Fire Polygons</a></li>
-							<li><a target="_blank" href="https://www.census.gov/data/datasets/time-series/demo/popest/2010s-counties-detail.html">California 2010s County-Level Census Data</a></li>
-						</ul>
-						<br>
+					<div class="section" id="section7">
+						<br><br><br>
+						<section style="height: 100vh;"> <a name="demographics"></a>
+							<div class="row">
+								<div class="col-4" id="walkthrough"></div>
+								<div class="col-8" id="sankey" style="height: 80vh; width: 100%;"></div>
+							</div>
+						</section>
+					</div>
 
-						<h4>Image Sources: </h4>
-						<p>None of these images are our own. Image links are included as comments in the code.</p>
+					<div class="section" id="section8">
+						<section style="height: 100vh;"> <a name="calltoaction"></a>
+							<br><br><br><br><br><br>
+							<p>We've seen that more frequent and more destructive fires are becoming the norm in California, that humans are a primary cause of wildfires, and that Hispanics are being disproportionately affected.</p>
+							<br><br>
+							<h4>What can we do to help those affected?</h4>
+							<ol>
+								<li>Donate money.</li>
+								<ul>
+									<li><a target="_blank" href="https://www.redcross.org/about-us/news-and-events/news/2018/california-wildfires-red-cross-helps-as-thousands-evacuate.html">American Red Cross</a></li>
+									<li><a target="_blank" href="https://www.calfund.org/wildfire-relief-fund/">California Community Foundation’s Wildlife Relief Fund</a></li>
+									<li><a target="_blank" href="https://www.cafirefoundation.org/programs/supplying-aid-to-victims-of-emergency/">California Fire Foundation</a></li>
+									<li><a target="_blank" href="https://www.unitedwayla.org/en/give/disaster-relief-fund/">United Way of Greater Los Angeles</a></li>
+								</ul>
+								<li>Adopt or foster a pet.</li>
+								<ul>
+									<li>Just as humans have been displaced by these fires, so have their pets. <a target="_blank" href="https://www.facebook.com/LAAnimalServices/">LA Animal Services</a> and other California-based shelters often post calls for fosters and adopters on their Facebook pages.</li>
+								</ul>
+								<li>Volunteer your time and skills.</li>
+								<ul>
+									<li><a target="_blank" href="http://www.caring-choices.org/">Caring Choices</a> is a Northern California-based
+										nonprofit which accepts applications from volunteers with medical backgrounds or other manual and technical skills - such as data entry, radio communications, or animal care - that are needed in the wake of these disasters.</li>
+								</ul>
+							</ol>
+						</section>
+					</div>
 
-						<a target="_blank" href="https://docs.google.com/document/d/1mHyz-C9D01MB53XVFC7Ug7ethV3TCDp4PPStJP9uRtc/edit?usp=sharing">Process Book</a>
-
-					</section>
+					<div class="section" id="section9">
+						<!--citations-->
+						<section> <a name="citations"></a>
+							<p>
+								This webpage is part of a final project for CS171: Visualization at Harvard University, Fall 2020.
+								We'd like to thank our TF mentor, Elizabeth, and the rest of the CS171 teaching staff for their guidance and
+								support on this project.
+							</p>
+							<br>
+							<h4>Project By:</h4>
+							<p>Katherine Deng, Anna Li, Christina Wang</p>
+							<br>
+							<h4>Data Sources:</h4>
+							<ul>
+								<li><a target="_blank" href="https://www.kaggle.com/captcalculator/wildfire-exploratory-analysis">US Fires Data, 1992-2015</a></li>
+								<li><a target="_blank" href="https://www.kaggle.com/ananthu017/california-wildfire-incidents-20132020">California Fires Data, 2013-2020</a></li>
+								<li><a target="_blank" href="https://github.com/neuroslice/California-Wildfires/blob/master/caFire.json">California Fire Polygons</a></li>
+								<li><a target="_blank" href="https://www.census.gov/data/datasets/time-series/demo/popest/2010s-counties-detail.html">California 2010s County-Level Census Data</a></li>
+							</ul>
+							<br>
+							<h4>Image Sources:</h4>
+							<p>None of these images are our own. Image links are included as comments in the code.</p>
+							<br>
+							<a target="_blank" href="https://docs.google.com/document/d/1mHyz-C9D01MB53XVFC7Ug7ethV3TCDp4PPStJP9uRtc/edit?usp=sharing">Process Book</a>
+							<br>
+							<a target="_blank" href="https://docs.google.com/document/d/1mHyz-C9D01MB53XVFC7Ug7ethV3TCDp4PPStJP9uRtc/edit?usp=sharing">Video Walkthrough [Insert Link]</a>
+						</section>
+					</div>
 				</div>
+			</article>
+		</div>
 
-			</div>
-
-		</article>
 	</div>
-
-</div>
-<script>
-	function openNav() {
-		document.getElementById("mySidenav").style.width = "250px";
-		//document.getElementById("main").style.marginLeft = "250px";
-	}
-
-	function closeNav() {
-		document.getElementById("mySidenav").style.width = "0";
-		//document.getElementById("main").style.marginLeft= "0";
-	}
-</script>
-
-<script src="js/fullpage.js"></script>
-<script type="text/javascript">
-	var myFullpage = new fullpage('#fullpage', {
-
-		licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-
-		//Navigation
-		menu: '#menu',
-		navigation: true,
-		navigationPosition: 'right',
-		showActiveTooltip: false,
-		slidesNavigation: false,
-		slidesNavPosition: 'bottom',
-
-		//Scrolling
-		css3: true,
-		scrollingSpeed: 500,
-		autoScrolling: true,
-		easing: 'easeInOutCubic',
-		easingcss3: 'ease',
-
-		//Accessibility
-		keyboardScrolling: true,
-		animateAnchor: true,
-		recordHistory: true,
-
-		//Design
-		controlArrows: true,
-		verticalCentered: true,
-		paddingTop: '10px',
-		paddingBottom: '10px',
-		fixedElements: '#header, .footer',
-		responsiveWidth: 0,
-		responsiveHeight: 0,
-		parallax: false,
-		parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
-		cards: false,
-		cardsOptions: {perspective: 100, fadeContent: true, fadeBackground: true},
-
-		lazyLoading: true,
-	});
-</script>
-
-<!-- Load JS libraries: jQuery, bootstrap, D3 -->
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/d3.min.js"></script>
-
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-<script src="https://d3js.org/topojson.v2.min.js"></script>
-<script src="https://d3js.org/d3-geo.v1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
-
-<script src="https://unpkg.com/d3-array@1"></script>
-<script src="https://unpkg.com/d3-collection@1"></script>
-<script src="https://unpkg.com/d3-path@1"></script>
-<script src="https://unpkg.com/d3-shape@1"></script>
-<script src="https://unpkg.com/d3-sankey@0"></script>
-
-<!-- Your implementation -->
-<script src="js/main.js"></script>
-<script src="js/barVis.js"></script>
-<script src="js/barVisDash.js"></script>
-<script src="js/brushVis.js"></script>
-<script src="js/dataTable.js"></script>
-<script src="js/fireDictionary.js"></script>
-<script src="js/heatMapVis.js"></script>
-<script src="js/Sets.js"></script>
-<script src="js/mapVis.js"></script>
-<script src="js/helpers.js"></script>
-
-<script>
-	var dojoConfig = {
-		paths: {
-			plugins: location.pathname.replace(/\/[^/]+$/, "") + "/plugins"
+	<script>
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
 		}
-	};
-</script>
-<script src="https://js.arcgis.com/3.34compact/"></script>
-<script src="./js/wind-fire.js"></script>
-<script src="./js/windy.js"></script>
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+
+	<script src="js/fullpage.js"></script>
+	<script type="text/javascript">
+		var myFullpage = new fullpage('#fullpage', {
+
+			licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+
+			//Navigation
+			menu: '#menu',
+			navigation: true,
+			navigationPosition: 'right',
+			showActiveTooltip: false,
+			slidesNavigation: false,
+			slidesNavPosition: 'bottom',
+
+			//Scrolling
+			css3: true,
+			scrollingSpeed: 500,
+			autoScrolling: true,
+			easing: 'easeInOutCubic',
+			easingcss3: 'ease',
+
+			//Accessibility
+			keyboardScrolling: true,
+			animateAnchor: true,
+			recordHistory: true,
+
+			//Design
+			controlArrows: true,
+			verticalCentered: true,
+			paddingTop: '10px',
+			paddingBottom: '10px',
+			fixedElements: '#header, .footer',
+			responsiveWidth: 0,
+			responsiveHeight: 0,
+			parallax: false,
+			parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
+			cards: false,
+			cardsOptions: {perspective: 100, fadeContent: true, fadeBackground: true},
+
+			lazyLoading: true,
+		});
+	</script>
+
+	<!-- Load JS libraries: jQuery, bootstrap, D3 -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/d3.min.js"></script>
+
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<script src="https://d3js.org/topojson.v2.min.js"></script>
+	<script src="https://d3js.org/d3-geo.v1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+
+	<script src="https://unpkg.com/d3-array@1"></script>
+	<script src="https://unpkg.com/d3-collection@1"></script>
+	<script src="https://unpkg.com/d3-path@1"></script>
+	<script src="https://unpkg.com/d3-shape@1"></script>
+	<script src="https://unpkg.com/d3-sankey@0"></script>
+
+	<!-- Your implementation -->
+	<script src="js/main.js"></script>
+	<script src="js/barVis.js"></script>
+	<script src="js/barVisDash.js"></script>
+	<script src="js/brushVis.js"></script>
+	<script src="js/dataTable.js"></script>
+	<script src="js/fireDictionary.js"></script>
+	<script src="js/heatMapVis.js"></script>
+	<script src="js/Sets.js"></script>
+	<script src="js/mapVis.js"></script>
+	<script src="js/helpers.js"></script>
+
+	<script>
+		var dojoConfig = {
+			paths: {
+				plugins: location.pathname.replace(/\/[^/]+$/, "") + "/plugins"
+			}
+		};
+	</script>
+	<script src="https://js.arcgis.com/3.34compact/"></script>
+	<script src="./js/wind-fire.js"></script>
+	<script src="./js/windy.js"></script>
 
 </body>
 </html>

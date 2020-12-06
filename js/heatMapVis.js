@@ -83,7 +83,6 @@ class HeatMapVis {
                 myBarVis.wrangleData();
                 changeTitle();
             } else {
-                // not sure what this line does lol
                 vis.svg.property("value", []).dispatch("input");
             }
         }
@@ -124,7 +123,8 @@ class HeatMapVis {
         vis.svg.append('g')
             .append("text")
             .attr('transform', `translate (${vis.width+30}, ${vis.height-180}) rotate(-90)`)
-            .text('Number of Fires');
+            .text('Number of Fires')
+            .attr("font-size", 13);
 
         vis.yLegend = d3.scaleLinear()
             .range([0, 150]);
@@ -228,7 +228,7 @@ class HeatMapVis {
             .select(".domain").remove()
 
         vis.gbrush = vis.svg.append("g")
-            .attr("class", "brush")
+            .attr("class", "brushHeat")
             .call(vis.brush)
             //.selectAll("rect")
             .attr("y", -6)
@@ -251,7 +251,7 @@ class HeatMapVis {
                 selectedTimeRangeHeatMap = [1992, 2015]
                 myBarVis.wrangleData();
                 changeTitle();
-                d3.selectAll(".brush").call(vis.brush.move, null)
+                d3.selectAll(".brushHeat").call(vis.brush.move, null)
             })
 
         vis.svg.append('g')
