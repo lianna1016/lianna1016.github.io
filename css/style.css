@@ -325,7 +325,7 @@ h5, h6 {
     pointer-events: stroke;
     stroke-width: 50px;
     stroke: transparent;
-    cursor: grabbing;
+    cursor: crosshair;
 }
 
 .handle {

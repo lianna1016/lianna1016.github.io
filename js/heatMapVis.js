@@ -102,16 +102,16 @@ class HeatMapVis {
         //Set the color for the start (0%)
         linearGradient.append("stop")
             .attr("offset", "0%")
-            .attr("stop-color", "white");
+            .attr("stop-color", "white"); //light blue
 
         linearGradient.append("stop")
             .attr("offset", "50%")
-            .attr("stop-color", "#C22E0F");
+            .attr("stop-color", "#C22E0F"); //light blue
 
         //Set the color for the end (100%)
         linearGradient.append("stop")
             .attr("offset", "100%")
-            .attr("stop-color", "#8d0000");
+            .attr("stop-color", "#8d0000"); //dark blue
 
         //Draw the rectangle and fill with gradient
         vis.svg.append("rect")
