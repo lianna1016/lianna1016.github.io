@@ -19,5 +19,5 @@ Our webpage is best viewed in full screen.
 [Our Website](https://lianna1016.github.io/index.html)
 
 ## Screencast Video
-[Our Video](makebelievewebsite.com)
+[Our Video](https://drive.google.com/file/d/1IuBSP8lnOElExQ0_7WZbchsXxrPnWL7o/view?usp=sharing)
 
